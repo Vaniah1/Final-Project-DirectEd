@@ -10,12 +10,13 @@ const port = process.env.PORT || 5000;
 const app = express();
 app.use(express.json());
 app.use(cors());
-const MONGO_URL = "mongodb+srv://smash:smash@learn.c1mgxaw.mongodb.net/?retryWrites=true&w=majority&appName=Learn"
+const MONGO_URL = process.env.MONGO_URL
 
 
 
 
 app.use("/api/auth",authRoutes)
+app.use("/api/class",classRoutes)
 
 mongoose.connect(MONGO_URL).then(() => {
     console.log('Connected to MongoDB server');

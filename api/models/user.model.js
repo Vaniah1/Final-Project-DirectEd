@@ -41,10 +41,17 @@ const studentSchema = new mongoose.Schema({
         type: Date,
         default: Date.now
     },
-    
     updated_at: {
         type: Date,
         default: Date.now
+    },
+    isAdmin: {
+        type: Boolean,
+        default: false
+    },
+    isSuper: {
+        type: Boolean,
+        default: false
     }
 },{timestamps:true})
 

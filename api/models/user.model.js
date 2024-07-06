@@ -14,10 +14,9 @@ const studentSchema = new mongoose.Schema({
     password: {
         type: String,
         required: true,
-        maxLength: 8
     },
     gender: {
-        type: "MALE" | "FEMALE",
+        type: String,
         required: true
     },
     dateOfBirth: {

@@ -23,7 +23,7 @@ const adminSchema = new mongoose.Schema({
         type: Date,
         default: Date.now
     }
-}, {timestamps: true})
+}, )
 
 const Admin = mongoose.model("Admin", adminSchema)
 export default Admin

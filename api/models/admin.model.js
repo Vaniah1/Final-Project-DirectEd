@@ -11,10 +11,15 @@ const adminSchema = new mongoose.Schema({
         required: true,
         unique: true
     },
+    isAdmin: {
+        type: Boolean,
+        default: true
+    },
     password: {
         type: String,
         required: true
     },
+    classes: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Class' }],
     created_at: {
         type: Date,
         default: Date.now

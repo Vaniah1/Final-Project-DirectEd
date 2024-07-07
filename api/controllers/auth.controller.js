@@ -32,7 +32,7 @@ export const signupTeacher = async (req, res) => {
         }
         const salt = await bcryptjs.genSalt(10);
         const hashedPassword = await bcryptjs.hash(password, salt);
-        const newUser = new Admin({ name, email, password: hashedPassword });
+        const newUser = new Admin({ name, email, password: hashedPassword, isAdmin: true });
         const savedUser = await newUser.save();
         res.status(201).json(savedUser);
     } catch (err) {
@@ -49,7 +49,7 @@ export const signupPrincipal = async (req, res) => {
         }
         const salt = await bcryptjs.genSalt(10);
         const hashedPassword = await bcryptjs.hash(password, salt);
-        const newUser = new Super({ name, email, password: hashedPassword });
+        const newUser = new Super({ name, email, password: hashedPassword, isSuper: true });
         const savedUser = await newUser.save();
         res.status(201).json(savedUser);
     } catch (err) {

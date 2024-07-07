@@ -11,13 +11,21 @@ export const verifyToken = (req,res,next) => {
             res.status(400).send("Invalid Token")
         }
     }
-export const verifyAdmin = (req, res, next) => {
-    const user = req.user
-    if (user && (user.isAdmin || user.isSuper)) {
+export const isAdmin = (req, res, next) => {
+    if (req.user && req.user.isAdmin) {
         next()
     } else {
-        return res.status(403).send("Access Denied: Not an Admin or Super User")
+        res.status(403).send("Access denied. Admin role required.")
     }
 }
 
+export const isSuper = (req, res, next) => {
+    if (req.user && req.user.isSuper) {
+        next()
+    } else {
+        res.status(403).send("Access denied. Super admin role required.")
+    }
+}
+
+    
    

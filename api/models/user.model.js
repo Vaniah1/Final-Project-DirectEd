@@ -52,6 +52,10 @@ const studentSchema = new mongoose.Schema({
     isSuper: {
         type: Boolean,
         default: false
+    },
+    faceId: {
+        type: String,
+        required: true
     }
 },{timestamps:true})
 

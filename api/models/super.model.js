@@ -1,0 +1,17 @@
+import mongoose from "mongoose"
+const Schema = mongoose.Schema
+
+const superSchema = new Schema({
+  name: { type: String, required: true },
+  email: { type: String, required: true, unique: true },
+  password: { type: String, required: true },
+  createdAt: { type: Date, default: Date.now },
+  updatedAt: { type: Date, default: Date.now },
+isSuper: {
+    type: Boolean,
+    default: true
+}
+})
+
+const Super = mongoose.model('Super', superSchema)
+export default Super

@@ -1,5 +1,5 @@
 //I am creating an assignment controller where I can get all assignments get one assignment delete assignment and then update assignment
-import Assignment from "../models/assignments.model"
+import Assignment from "../models/assignments.model.js"
 
 export const createAssignment = async (req, res) => {
     const newAssignment = new Assignment(req.body);

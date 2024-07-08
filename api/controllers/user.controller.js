@@ -21,7 +21,7 @@ const getAllStudents = async (req, res) => {
 
 const deleteTeacher = async (req, res) => {
   try {
-    await User.findByIdAndDelete(req.params.id)
+    await Admin.findByIdAndDelete(req.params.id)
     res.status(200).json('Teacher has been deleted...')
   } catch (err) {
     res.status(500).json(err)
@@ -39,7 +39,7 @@ const deleteStudent = async (req, res) => {
 
 const updateTeacher = async (req, res) => {
   try {
-    const updatedTeacher = await User.findByIdAndUpdate(
+    const updatedTeacher = await Admin.findByIdAndUpdate(
       req.params.id,
       {
         $set: req.body,
@@ -85,6 +85,39 @@ const getOneStudent = async (req, res) => {
   }
 }
 
+const getTeacherCount = async (req, res) => {
+  try {
+    const { limit = 10, skip = 0, sort = { _id: 1 }, filters = {} } = req.query
+    const teacherCount = await Class.aggregate([
+      { $unwind: '$teacher' },
+      { $match: filters },
+      { $group: { _id: '$teacher', count: { $sum: 1 } } },
+      { $sort: sort },
+      { $skip: parseInt(skip) },
+      { $limit: parseInt(limit) },
+      { $group: { _id: null, count: { $sum: '$count' } } }
+    ])
+    res.status(200).json({ count: teacherCount[0]?.count || 0 })
+  } catch (error) {
+    res.status(500).json({ error: error.message })
+  }
+}
+  const getStudentCount = async (req, res) => {
+    try {
+      const { limit = 10, skip = 0, sort = { _id: 1 }, filters = {} } = req.query
+      const studentCount = await Class.aggregate([
+        { $unwind: '$students' },
+        { $match: filters },
+        { $group: { _id: null, count: { $sum: 1 } } },
+        { $sort: sort },
+        { $skip: parseInt(skip) },
+        { $limit: parseInt(limit) }
+      ])
+      res.status(200).json({ count: studentCount[0]?.count || 0 })
+    } catch (error) {
+      res.status(500).json({ error: error.message })
+    }
+  }
 
 export default {
   getAllTeachers,
@@ -95,4 +128,6 @@ export default {
   updateStudent,
   getOneTeacher,
   getOneStudent,
+  getTeacherCount,
+    getStudentCount
 }

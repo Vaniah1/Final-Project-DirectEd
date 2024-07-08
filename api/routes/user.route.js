@@ -6,18 +6,18 @@ import  userController from '../controllers/user.controller.js'
 
 
 // Get all students
-router.get('/get', verifyToken, isAdmin | isSuper, userController.getAllStudents)
-router.get("/get/id:", verifyToken, isAdmin | isSuper, userController.getOneStudent)
+router.get('/get', verifyToken,isSuper, userController.getAllStudents)
+router.get("/get/id:", verifyToken, isSuper, userController.getOneStudent)
 
 
 
 // Delete a student
-router.delete('/delete/:id', verifyToken, isAdmin |isSuper, userController.deleteStudent)
+router.delete('/delete/:id', verifyToken, isSuper, userController.deleteStudent)
 
 
 
 
 // Edit a student
-router.put('/update/:id', verifyToken, isAdmin | isSuper, userController.updateStudent)
+router.put('/update/:id', verifyToken,isSuper, userController.updateStudent)
 
-module.exports = router
+export default router

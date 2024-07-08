@@ -51,39 +51,6 @@ export const getClassCount = async (req, res) => {
   }
 }
 
-export const getTeacherCount = async (req, res) => {
-  try {
-    const { limit = 10, skip = 0, sort = { _id: 1 }, filters = {} } = req.query
-    const teacherCount = await Class.aggregate([
-      { $unwind: '$teacher' },
-      { $match: filters },
-      { $group: { _id: '$teacher', count: { $sum: 1 } } },
-      { $sort: sort },
-      { $skip: parseInt(skip) },
-      { $limit: parseInt(limit) },
-      { $group: { _id: null, count: { $sum: '$count' } } }
-    ])
-    res.status(200).json({ count: teacherCount[0]?.count || 0 })
-  } catch (error) {
-    res.status(500).json({ error: error.message })
-  }
-}
-  export const getStudentCount = async (req, res) => {
-    try {
-      const { limit = 10, skip = 0, sort = { _id: 1 }, filters = {} } = req.query
-      const studentCount = await Class.aggregate([
-        { $unwind: '$students' },
-        { $match: filters },
-        { $group: { _id: null, count: { $sum: 1 } } },
-        { $sort: sort },
-        { $skip: parseInt(skip) },
-        { $limit: parseInt(limit) }
-      ])
-      res.status(200).json({ count: studentCount[0]?.count || 0 })
-    } catch (error) {
-      res.status(500).json({ error: error.message })
-    }
-  }
 export const getAllClasses = async (req, res) => {
   try {
     const { limit = 10, skip = 0, sort = { _id: 1 }, filters = {} } = req.query

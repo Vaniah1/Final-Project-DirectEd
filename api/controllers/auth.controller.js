@@ -166,6 +166,8 @@ export const loginPrincipal = async (req, res) => {
       }
   };
 
+  
+
   export const googlePrincipal = async (req, res) => {
       const { email, name } = req.body;
       try {

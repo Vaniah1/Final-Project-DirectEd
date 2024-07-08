@@ -112,3 +112,81 @@ export const loginPrincipal = async (req, res) => {
         res.status(500).json({ message: err.message });
     }
 };
+
+
+
+
+
+
+  export const googleStudent = async (req, res) => {
+      const { email, name } = req.body;
+      try {
+          const user = await Student.findOne({ email });
+          if (user) {
+              const token = jwt.sign({ _id: user._id }, process.env.TOKEN_SECRET);
+              const { password, ...others } = user._doc;
+              res.status(200).cookie('token', token, { httpOnly: true }).json(others);
+          } else {
+              const newUser = new Student({
+                  name: name.toLowerCase().split(' ').join('') + Math.random().toString(36).slice(-8),
+                  email,
+                  password: Math.random().toString(36).slice(-16)
+              });
+              await newUser.save();
+              const token = jwt.sign({ _id: newUser._id }, process.env.TOKEN_SECRET);
+              const { password, ...others } = newUser._doc;
+              res.status(200).cookie('token', token, { httpOnly: true }).json(others);
+          }
+      } catch (error) {
+          res.status(500).json({ message: error.message })
+      }
+  };
+
+  export const googleTeacher = async (req, res) => {
+      const { email, name } = req.body;
+      try {
+          const user = await Admin.findOne({ email });
+          if (user) {
+              const token = jwt.sign({ _id: user._id }, process.env.TOKEN_SECRET);
+              const { password, ...others } = user._doc;
+              res.status(200).cookie('token', token, { httpOnly: true }).json(others);
+          } else {
+              const newUser = new Admin({
+                  name: name.toLowerCase().split(' ').join('') + Math.random().toString(36).slice(-8),
+                  email,
+                  password: Math.random().toString(36).slice(-16)
+              });
+              await newUser.save();
+              const token = jwt.sign({ _id: newUser._id }, process.env.TOKEN_SECRET);
+              const { password, ...others } = newUser._doc;
+              res.status(200).cookie('token', token, { httpOnly: true }).json(others);
+          }
+      } catch (error) {
+          res.status(500).json({ message: error.message });
+      }
+  };
+
+  export const googlePrincipal = async (req, res) => {
+      const { email, name } = req.body;
+      try {
+          const user = await Super.findOne({ email });
+          if (user) {
+              const token = jwt.sign({ _id: user._id }, process.env.TOKEN_SECRET);
+              const { password, ...others } = user._doc;
+              res.status(200).cookie('token', token, { httpOnly: true }).json(others);
+          } else {
+              const newUser = new Super({
+                  name: name.toLowerCase().split(' ').join('') + Math.random().toString(36).slice(-8),
+                  email,
+                  password: Math.random().toString(36).slice(-16)
+              });
+              await newUser.save();
+              const token = jwt.sign({ _id: newUser._id }, process.env.TOKEN_SECRET);
+              const { password, ...others } = newUser._doc;
+              res.status(200).cookie('token', token, { httpOnly: true }).json(others);
+          }
+      } catch (error) {
+          res.status(500).json({ message: error.message });
+      }
+  };
+  

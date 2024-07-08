@@ -1,5 +1,5 @@
 import express from 'express'
-import { createAssignment, deleteAssignment, getAllAssignments, getAssignmentById, updateAssignment } from '../controllers/assignment.controller'
+import { createAssignment, deleteAssignment, getAllAssignments, getAssignmentById, updateAssignment } from '../controllers/assignment.controller.js'
 
 const router = express.Router()
 

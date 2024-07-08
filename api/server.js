@@ -9,6 +9,7 @@ import faceRoutes from "./utils/facial.js"
 import subjectsRoutes from "./routes/subject.route.js"
 import teachersRoutes from "./routes/admin.route.js"
 import studentsRoutes from "./routes/user.route.js"
+import assignmentsRoutes from "./routes/assignment.route.js"
 
 import path from "path";
 
@@ -29,6 +30,7 @@ app.use("/api/face-id",faceRoutes)
 app.use("/api/subjects", subjectsRoutes)
 app.use("/api/teachers", teachersRoutes)
 app.use("/api/students", studentsRoutes)
+app.use("/api/assignments", assignmentsRoutes)
 
 mongoose.connect(MONGO_URL).then(() => {
     console.log('Connected to MongoDB server');

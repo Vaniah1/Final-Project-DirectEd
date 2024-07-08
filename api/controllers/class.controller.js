@@ -41,3 +41,38 @@ export const deleteClass = async (req, res) => {
   }
 }
 
+export const getClassCount = async (req, res) => {
+  try {
+    const { limit = 10, skip = 0, sort = { _id: 1 } } = req.query
+    const classCount = await Class.countDocuments().sort(sort).skip(skip).limit(limit)
+    res.status(200).json({ count: classCount })
+  } catch (error) {
+    res.status(500).json({ error: error.message })
+  }
+}
+
+export const getAllClasses = async (req, res) => {
+  try {
+    const { limit = 10, skip = 0, sort = { _id: 1 }, filters = {} } = req.query
+    const classes = await Class.find(filters)
+      .sort(sort)
+      .skip(skip)
+      .limit(limit)
+    res.status(200).json(classes)
+  } catch (error) {
+    res.status(500).json({ error: error.message })
+  }
+}
+
+export const getClass = async (req, res) => {
+try {
+const { id } = req.params
+const classData = await Class.findById(id)
+if (!classData) {
+return res.status(404).json({ error: 'Class not found' })
+}
+res.status(200).json(classData)
+} catch (error) {
+res.status(500).json({ error: error.message })
+}
+}

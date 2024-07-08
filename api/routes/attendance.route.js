@@ -4,7 +4,7 @@ import { getAllAttendances } from "../controllers/attendance.controller.js";
 const router = Router();
 
 
-router.get("/get-all-attendances",getAllAttendances)
+router.get("/get",getAllAttendances)
 
 
 export default router;

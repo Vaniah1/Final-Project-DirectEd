@@ -1,8 +1,9 @@
+import Admin from '../models/admin.model.js'
 import User from '../models/user.model.js'
 
 const getAllTeachers = async (req, res) => {
   try {
-    const teachers = await User.find({ role: 'teacher' })
+    const teachers = await Admin.find({ role: 'teacher' })
     res.status(200).json(teachers)
   } catch (err) {
     res.status(500).json(err)
@@ -66,6 +67,25 @@ const updateStudent = async (req, res) => {
   }
 }
 
+const getOneTeacher = async (req, res) => {
+  try {
+    const teacher = await Admin.findById(req.params.id)
+    res.status(200).json(teacher)
+  } catch (err) {
+    res.status(500).json(err)
+  }
+}
+
+const getOneStudent = async (req, res) => {
+  try {
+    const student = await User.findById(req.params.id)
+    res.status(200).json(student)
+  } catch (err) {
+    res.status(500).json(err)
+  }
+}
+
+
 export default {
   getAllTeachers,
   getAllStudents,
@@ -73,4 +93,6 @@ export default {
   deleteStudent,
   updateTeacher,
   updateStudent,
+  getOneTeacher,
+  getOneStudent,
 }

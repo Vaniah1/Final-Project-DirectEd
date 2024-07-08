@@ -1,11 +1,13 @@
 import express from "express"
 const router = express.Router()
+import { verifyToken,isAdmin, isSuper } from "../middleware/verify.middleware.js"
 
 // Get all teachers
-router.get('/teachers', verifyToken, isAdmin, userController.getAllTeachers)
+router.get('/get', verifyToken, isSuper, )
+router.get("/get/id:", verifyToken, isSuper, )
 
 // Delete a teacher
-router.delete('/teachers/:id', verifyToken, isAdmin, userController.deleteTeacher)
+router.delete('/delete/:id', verifyToken, isAdmin | isSuper, )
 
 
-router.put('/teachers/:id', verifyToken, isAdmin, userController.updateTeacher)
+router.put('/update/:id', verifyToken, isAdmin | isSuper, )

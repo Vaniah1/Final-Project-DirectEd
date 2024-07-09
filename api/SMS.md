@@ -52,7 +52,28 @@ app.use("/api/students", studentsRoutes); // http://localhost:5000/api/students
 
 // const __dirname = path.resolve()
 
-PORT = 5000
-MONGO_URL = "mongodb+srv://smash:smash@learn.c1mgxaw.mongodb.net/?retryWrites=true&w=majority&appName=Learn"
-TOKEN_SECRET = "VeyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IlF1aW5jeSBMYXJzb24iLCJpYXQiOjE1MTYyMzkwMjJ9.WcPGXClpKD7Bc1C0CCDA1060E2GGlTfamrd8-W0ghBE"
 
+
+
+http://localhost:4000/api/register/signin
+http://localhost:4000/api/register/admin
+http://localhost:4000/api/announcements/getall
+http://localhost:4000/api/announcements
+http://localhost:4000/api/assignments
+http://localhost:4000/api/assignments/getall
+http://localhost:4000/api/attendance
+http://localhost:4000/api/attendance/getall
+http://localhost:4000/api/class/getall
+http://localhost:4000/api/class
+http://localhost:4000/api/events/getall
+http://localhost:4000/api/events
+http://localhost:4000/api/exam/getall
+http://localhost:4000/api/exam
+http://localhost:4000/api/library/getall
+http://localhost:4000/api/library/books
+http://localhost:4000/api/students/getall
+http://localhost:4000/api/students
+http://localhost:4000/api/teachers
+http://localhost:4000/api/teachers/getall
+http://localhost:4000/api/users/student/signin
+http://localhost:4000/api/users/teacher/signin

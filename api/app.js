@@ -37,19 +37,19 @@ app.use((err, req, res, next) => {
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 
-app.use("/api/v1/students", studentRouter);
-app.use("/api/v1/teachers", teacherRouter);
-app.use("/api/v1/assignments", assignmentRouter);
+app.use("/api/students", studentRouter);
+app.use("/api/teachers", teacherRouter);
+app.use("/api/assignments", assignmentRouter);
 
-app.use("/api/v1/announcements", announcementRouter);
-app.use("/api/v1/class", classRouter);
-app.use("/api/v1/library", libraryRouter);
-app.use("/api/v1/events", eventsRouter);
-app.use("/api/v1/exam", examRouter);
-app.use("/api/v1/attendance", attendanceRouter);
+app.use("/api/announcements", announcementRouter);
+app.use("/api/class", classRouter);
+app.use("/api/library", libraryRouter);
+app.use("/api/events", eventsRouter);
+app.use("/api/exam", examRouter);
+app.use("/api/attendance", attendanceRouter);
 
-app.use("/api/v1/users", usersRouter);
-app.use("/api/v1/register", adminRegisterRouter);
+app.use("/api/users", usersRouter);
+app.use("/api/register", adminRegisterRouter);
 
 dbConnection()
  

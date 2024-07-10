@@ -1,4 +1,5 @@
 import axios from 'axios';
+
 import {
     authRequest,
     stuffAdded,
@@ -13,11 +14,11 @@ import {
     getError,
 } from './userSlice';
 const REACT_APP_BASE_URL = "http://localhost:5000";
+
 export const loginUser = (fields, role) => async (dispatch) => {
     
     dispatch(authRequest());
-
-    try {
+     try {
         const result = await axios.post(`${REACT_APP_BASE_URL}/${role}Login`, fields, {
             headers: { 'Content-Type': 'application/json' },
         });
@@ -33,8 +34,7 @@ export const loginUser = (fields, role) => async (dispatch) => {
 
 export const registerUser = (fields, role) => async (dispatch) => {
     dispatch(authRequest());
-
-    try {
+     try {
         const result = await axios.post(`${REACT_APP_BASE_URL}/${role}Reg`, fields, {
             headers: { 'Content-Type': 'application/json' },
         });

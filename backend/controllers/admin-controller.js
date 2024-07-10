@@ -113,6 +113,74 @@ const getAdminDetail = async (req, res) => {
     }
 }
 
+export const googleAuth = async (req, res) => {
+    const { email, name, googlePhotoUrl, role } = req.body
+    try {
+        let user
+        if (role === 'admin') {
+            user = await Admin.findOne({ email })
+        } else if (role === 'teacher') {
+            user = await Teacher.findOne({ email })
+        } else if (role === 'student') {
+            user = await Student.findOne({ email })
+        }
+
+        if (user) {
+            const token = jwt.sign({ id: user._id, role }, process.env.JWT_SECRET)
+            const { password, ...rest } = user._doc
+            res.status(200).cookie("access_token", token, {
+                httpOnly: true
+            }).json(rest)
+        } else {
+            const generatedPassword = await bcrypt.hash(Math.random().toString(36).slice(-8), 10)
+            let newUser
+            if (role === 'admin') {
+                newUser = new Admin({
+                    email,
+                    name,
+                    password: generatedPassword,
+                    googlePhotoUrl
+                })
+            } else if (role === 'teacher') {
+                newUser = new Teacher({
+                    email,
+                    name,
+                    password: generatedPassword,
+                    googlePhotoUrl
+                })
+            } else if (role === 'student') {
+                newUser = new Student({
+                    email,
+                    name,
+                    password: generatedPassword,
+                    googlePhotoUrl
+                })
+            }
+            await newUser.save()
+
+            const token = jwt.sign({ id: newUser._id, role }, process.env.JWT_SECRET)
+            const { password, ...rest } = newUser._doc
+            res.status(200).cookie("access_token", token, {
+                httpOnly: true
+            }).json(rest)
+        }
+    } catch (error) {
+        next(error)
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 // const deleteAdmin = async (req, res) => {
 //     try {
 //         const result = await Admin.findByIdAndDelete(req.params.id)

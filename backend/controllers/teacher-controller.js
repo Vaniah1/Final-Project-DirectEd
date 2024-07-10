@@ -32,11 +32,12 @@ const teacherLogIn = async (req, res) => {
         if (teacher) {
             const validated = await bcrypt.compare(req.body.password, teacher.password);
             if (validated) {
+                const token = jwt.sign({ id: teacher._id }, process.env.JWT_SECRET, { expiresIn: '1h' });
                 teacher = await teacher.populate("teachSubject", "subName sessions")
                 teacher = await teacher.populate("school", "schoolName")
                 teacher = await teacher.populate("teachSclass", "sclassName")
                 teacher.password = undefined;
-                res.send(teacher);
+                res.send({ teacher, token });
             } else {
                 res.send({ message: "Invalid password" });
             }

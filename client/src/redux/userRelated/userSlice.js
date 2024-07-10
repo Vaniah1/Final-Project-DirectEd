@@ -29,7 +29,7 @@ const userSlice = createSlice({
             state.error = null;
             state.tempDetails = action.payload;
         },
-        authSuccess: (state, action) => {
+         authSuccess: (state, action) => {
             state.status = 'success';
             state.currentUser = action.payload;
             state.currentRole = action.payload.role;
@@ -52,8 +52,7 @@ const userSlice = createSlice({
             state.error = null;
             state.currentRole = null
         },
-
-        doneSuccess: (state, action) => {
+doneSuccess: (state, action) => {
             state.userDetails = action.payload;
             state.loading = false;
             state.error = null;

@@ -8,6 +8,7 @@ const initialState = {
     statestatus: "idle",
 };
 
+
 const studentSlice = createSlice({
     name: 'student',
     initialState,

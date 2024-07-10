@@ -1,4 +1,5 @@
 import axios from 'axios';
+
 import {
     getRequest,
     getSuccess,
@@ -36,7 +37,7 @@ export const getTeacherDetails = (id) => async (dispatch) => {
     }
 }
 
-export const updateTeachSubject = (teacherId, teachSubject) => async (dispatch) => {
+export const updateTeachSubect = (teachId, teachSubject) => async (dispatch) => {
     dispatch(getRequest());
 
     try {

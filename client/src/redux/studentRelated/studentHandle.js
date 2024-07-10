@@ -10,10 +10,10 @@ import {
 
 const REACT_APP_BASE_URL = "http://localhost:5000";
 
+
 export const getAllStudents = (id) => async (dispatch) => {
     dispatch(getRequest());
-
-    try {
+      try {
         const result = await axios.get(`${REACT_APP_BASE_URL}/Students/${id}`);
         if (result.data.message) {
             dispatch(getFailed(result.data.message));

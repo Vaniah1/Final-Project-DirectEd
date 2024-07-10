@@ -56,6 +56,9 @@ const studentLogIn = async (req, res) => {
     }
 };
 
+
+
+
 const getStudents = async (req, res) => {
     try {
         let students = await Student.find({ school: req.params.id }).populate("sclassName", "sclassName");

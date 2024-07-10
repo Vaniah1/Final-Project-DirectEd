@@ -4,10 +4,12 @@ import { Container, Grid, Box, Button } from '@mui/material';
 import styled from 'styled-components';
 import Students from "../assets/students.svg";
 import { LightPurpleButton } from '../components/buttonStyles';
+import TypingEffect from '../components/TypeEffect';
 
 const Homepage = () => {
     return (
         <StyledContainer>
+           
             <Grid container spacing={0}>
                 <Grid item xs={12} md={6}>
                     <img src={Students} alt="students" style={{ width: '100%' }} />
@@ -21,11 +23,12 @@ const Homepage = () => {
                             <br />
                             System
                         </StyledTitle>
-                        <StyledText>
+                        <TypingEffect/>
+                        {/* <StyledText>
                             Streamline school management, class organization, and add students and faculty.
-                            Seamlessly track attendance, assess performance, and provide feedback.
+                            Seamlessly track attendance,and provide feedback.
                             Access records, view marks, and communicate effortlessly.
-                        </StyledText>
+                        </StyledText> */}
                         <StyledBox>
                             <StyledLink to="/choose">
                                 <LightPurpleButton variant="contained" fullWidth>

@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import Loginheader from '../../Components/Loginheader'
+import Loginheader from '../Components/Loginheader'
 
 const Login = () => {
   return (

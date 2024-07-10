@@ -5,7 +5,7 @@ const TypingEffect = () => {
   const [text, setText] = useState('');
   const [index, setIndex] = useState(0);
   const [deleting, setDeleting] = useState(false);
-  const words = ['Streamline school management', ' class organization','add students and faculty','provide feedback.','Access records','view marks','and communicate effortlessly'];
+  const words = ['Streamline school management', ' class organization','add students and faculty','and provide feedback.','Access records','view marks','and communicate effortlessly'];
 
   useEffect(() => {
     const handleTyping = () => {

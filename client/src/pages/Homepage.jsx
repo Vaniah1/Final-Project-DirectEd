@@ -4,9 +4,11 @@ import { Container, Grid, Box, Button } from '@mui/material';
 import styled from 'styled-components';
 import Students from "../assets/students.svg";
 import { LightPurpleButton } from '../components/buttonStyles';
+import TypingEffect from '../components/TypeEffect';
 
 const Homepage = React.memo(() => {
     return (
+<<<<<<< HEAD
         <>
             <nav className='p-2 bg-blue1 sticky rounded-xl aria w-full h-[150px] text-3xl font-bold pt-12 pb-auto'>
                 <h1 className='[color:white]'>SCHOOL IN</h1>
@@ -15,6 +17,10 @@ const Homepage = React.memo(() => {
 
             <StyledContainer>
                 
+=======
+        <StyledContainer>
+           
+>>>>>>> 08ae3d66e05b1c70ea110fd31e09e7a25cd6ebef
             <Grid container spacing={0}>
                 <Grid item xs={12} md={6}>
                     <img src={Students} alt="students" style={{ width: '100%' }} loading="lazy" />
@@ -27,11 +33,12 @@ const Homepage = React.memo(() => {
                             SCHOOL IN
                             <br />
                         </StyledTitle>
-                        <StyledText>
+                        <TypingEffect/>
+                        {/* <StyledText>
                             Streamline school management, class organization, and add students and faculty.
-                            Seamlessly track attendance, assess performance, and provide feedback.
+                            Seamlessly track attendance,and provide feedback.
                             Access records, view marks, and communicate effortlessly.
-                        </StyledText>
+                        </StyledText> */}
                         <StyledBox>
                             <StyledLink to="/choose" aria-label="Login">
                                 <Button sx={{color: "#2135EF"}}  variant="outlined" fullWidth>

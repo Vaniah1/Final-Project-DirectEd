@@ -14,8 +14,8 @@ const TeacherProfile = () => {
   const teachSchool = currentUser.school
 
   return (
-    <>
-      <ProfileCard>
+    <ProfileContainer>
+      <ProfileCard> 
         <ProfileCardContent>
           <ProfileText>Name: {currentUser.name}</ProfileText>
           <ProfileText>Email: {currentUser.email}</ProfileText>
@@ -24,16 +24,32 @@ const TeacherProfile = () => {
           <ProfileText>School: {teachSchool.schoolName}</ProfileText>
         </ProfileCardContent>
       </ProfileCard>
-    </>
+    </ProfileContainer>
   )
 }
 
 export default TeacherProfile
 
+const ProfileContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f0f0f0;
+`;
+
 const ProfileCard = styled(Card)`
-  margin: 20px;
-  width: 400px;
-  border-radius: 10px;
+  margin: 40px;
+  width: 700px;
+  border-radius: 30px;
+  display: flex;
+  background-color: #ffffff;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
+
+  &:hover {
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+  }
 `;
 
 const ProfileCardContent = styled(CardContent)`
@@ -44,4 +60,7 @@ const ProfileCardContent = styled(CardContent)`
 
 const ProfileText = styled(Typography)`
   margin: 10px;
+  font-size: 18px;
+  font-weight: bold;
+  color: #333333;
 `;

@@ -43,34 +43,34 @@ const AddNotice = () => {
 
   return (
     <>
-      <div className="register">
-        <form className="registerForm" onSubmit={submitHandler}>
+      <div className="block p-4 m-8 justify-center items-center bg-gray h-full">
+        <form className="registerForm inline-block" onSubmit={submitHandler}>
           <span className="registerTitle">Add Notice</span>
           <label>Title</label>
-          <input className="registerInput" type="text" placeholder="Enter notice title..."
+          <input className="registerInput p-2 rounded-lg m-2" type="text" placeholder="Enter notice title..."
             value={title}
             onChange={(event) => setTitle(event.target.value)}
             required />
 
           <label>Details</label>
-          <input className="registerInput" type="text" placeholder="Enter notice details..."
+          <input className="registerInput p-2 rounded-lg m-2" type="text" placeholder="Enter notice details..."
             value={details}
             onChange={(event) => setDetails(event.target.value)}
             required />
 
           <label>Date</label>
-          <input className="registerInput" type="date" placeholder="Enter notice date..."
+          <input className="registerInput p-2 rounded-lg m-2" type="date" placeholder="Enter notice date..."
             value={date}
             onChange={(event) => setDate(event.target.value)}
             required />
 
-          <button className="registerButton" type="submit" disabled={loader}>
+          <button className="registerButton bg-blue2 rounded-lg hover:text-black text-white w-full  p-3 left-0 m-2"  type="submit" disabled={loader}>
             {loader ? (
               <CircularProgress size={24} color="inherit" />
             ) : (
               'Add'
             )}
-          </button>
+          </button> 
         </form>
       </div>
       <Popup message={message} setShowPopup={setShowPopup} showPopup={showPopup} />

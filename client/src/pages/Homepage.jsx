@@ -5,21 +5,27 @@ import styled from 'styled-components';
 import Students from "../assets/students.svg";
 import { LightPurpleButton } from '../components/buttonStyles';
 
-const Homepage = () => {
+const Homepage = React.memo(() => {
     return (
-        <StyledContainer>
+        <>
+            <nav className='p-2 bg-blue1 sticky rounded-xl aria w-full h-[150px] text-3xl font-bold pt-12 pb-auto'>
+                <h1 className='[color:white]'>SCHOOL IN</h1>
+            </nav>
+`
+
+            <StyledContainer>
+                
             <Grid container spacing={0}>
                 <Grid item xs={12} md={6}>
-                    <img src={Students} alt="students" style={{ width: '100%' }} />
+                    <img src={Students} alt="students" style={{ width: '100%' }} loading="lazy" />
                 </Grid>
                 <Grid item xs={12} md={6}>
                     <StyledPaper elevation={3}>
                         <StyledTitle>
-                            Welcome to
+                           <span className=''>Welcome to</span>
                             <br />
-                            School Management
+                            SCHOOL IN
                             <br />
-                            System
                         </StyledTitle>
                         <StyledText>
                             Streamline school management, class organization, and add students and faculty.
@@ -27,21 +33,22 @@ const Homepage = () => {
                             Access records, view marks, and communicate effortlessly.
                         </StyledText>
                         <StyledBox>
-                            <StyledLink to="/choose">
-                                <LightPurpleButton variant="contained" fullWidth>
+                            <StyledLink to="/choose" aria-label="Login">
+                                <Button sx={{color: "#2135EF"}}  variant="outlined" fullWidth>
                                     Login
-                                </LightPurpleButton>
+                                </Button>
                             </StyledLink>
-                            <StyledLink to="/chooseasguest">
+                            <StyledLink to="/chooseasguest" aria-label="Login as Guest">
                                 <Button variant="outlined" fullWidth
-                                    sx={{ mt: 2, mb: 3, color: "#7f56da", borderColor: "#7f56da" }}
-                                >
-                                    Login as Guest
+                                    sx={{ mt: 1, mb: 3, color: "#008000", borderColor: "#008000", pill: true }}>
+                                
+                                    
+                                    Admin Login with Google
                                 </Button>
                             </StyledLink>
                             <StyledText>
                                 Don't have an account?{' '}
-                                <Link to="/Adminregister" style={{color:"#550080"}}>
+                                <Link to="/Adminregister" style={{color:"#550080"}} aria-label="Sign up">
                                     Sign up
                                 </Link>
                             </StyledText>
@@ -50,8 +57,10 @@ const Homepage = () => {
                 </Grid>
             </Grid>
         </StyledContainer>
+        </>
+        
     );
-};
+});
 
 export default Homepage;
 
@@ -72,23 +81,21 @@ const StyledBox = styled(Box)`
   flex-direction: column;
   align-items: center;
   justify-content:center;
-  gap: 16px;
+  gap: 10px;
   padding: 24px;
 `;
 
 const StyledTitle = styled.h1`
   font-size: 3rem;
   color: #252525;
-  /* font-family: "Manrope"; */
   font-weight: bold;
-  padding-top: 0;
+  padding-top: 50px;
   letter-spacing: normal;
   line-height: normal;
 `;
 
 const StyledText = styled.p`
-  /* color: #550080; */
-  margin-top: 30px;
+  margin-top: 50px;
   margin-bottom: 30px; 
   letter-spacing: normal;
   line-height: normal;

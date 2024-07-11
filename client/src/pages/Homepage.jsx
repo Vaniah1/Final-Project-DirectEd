@@ -12,8 +12,9 @@ import GoogleIcon from '@mui/icons-material/Google';
 const Homepage = React.memo(() => {
     return (
         <>
-            <nav className='p-2 bg-blue1 sticky rounded-xl aria w-full h-[150px] text-3xl font-bold pt-12 pb-auto flex '>
-                <MenuBookIcon sx={{ color: 'white', fontSize: '4rem',marginLeft:"3px", marginRight: '8px', alignItems: 'center', display: 'inline-flex', verticalAlign: 'middle' }} /><h1 className='[color:white] items-center'>SCHOOL IN</h1>
+            <nav className='p-2 bg-blue1 sticky rounded-xl aria w-full h-[150px] text-3xl font-bold pt-12 pb-auto flex '>                
+                <MenuBookIcon sx={{ color: 'white', fontSize: '4rem',marginLeft:"3px", marginRight: '8px', alignItems: 'center', display: 'inline-flex', verticalAlign: 'middle' }} /><h1 className='[color:white] items-center'>E-CHUO</h1>
+                
             </nav>
 
             <StyledContainer>
@@ -27,7 +28,7 @@ const Homepage = React.memo(() => {
                         <Grid item xs={10} md={6}>
                             <StyledPaper elevation={3}>
                                 <StyledTitle>
-                                  <h1><span className='text-4xl mb-2'>WELCOME TO SCHOOL IN</span></h1>  
+                                  <h1><span className='text-4xl mb-2'>WELCOME TO E-CHUO</span></h1>  
                                 </StyledTitle>
                                 <TypingEffect/>
                                 <StyledBox>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Face Recognition Login System</title>
+    <link rel="stylesheet" href="./static/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Attendance System</h1>
+        <div class="button-group">
+            <button id="loginFace">Login with Face</button>
+            <button id="loginUsername">Login with Username</button>
+            <button id="register">Register New User</button>
+        </div>
+        <div id="loginForm" style="display: none;">
+            <h2>Login</h2>
+            <input type="text" id="loginUsername" placeholder="Username">
+            <input type="password" id="loginPassword" placeholder="Password">
+            <button id="submitLogin">Login</button>
+        </div>
+        <div id="registerForm" style="display: none;">
+            <h2>Register New User</h2>
+            <input type="text" id="registerName" placeholder="Full Name">
+            <input type="text" id="registerUsername" placeholder="Username">
+            <input type="password" id="registerPassword" placeholder="Password">
+            <input type="password" id="confirmPassword" placeholder="Confirm Password">
+            <button id="captureFace">Capture Face</button>
+            <video id="video" width="320" height="240" style="display: none;"></video>
+            <canvas id="canvas" width="320" height="240" style="display: none;"></canvas>
+            <button id="submitRegister">Register</button>
+        </div>
+        <div id="faceLoginForm" style="display: none;">
+            <h2>Face Login</h2>
+            <video id="faceVideo" width="320" height="240"></video>
+            <button id="captureFaceLogin">Capture and Login</button>
+        </div>
+        <div id="message"></div>
+    </div>
+    <script src="./static/script.js"></script>
+</body>
+</html>

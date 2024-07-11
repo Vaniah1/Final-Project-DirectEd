@@ -142,7 +142,7 @@ const ChooseUser = ({ visitor }) => {
 export default ChooseUser;
 
 const StyledContainer = styled.div`
-  background: linear-gradient(to bottom, #2135EF, #0C1FC8);
+  background-color: #28A745;
   height: 110vh;
   display: flex;
   justify-content: center;
@@ -158,7 +158,7 @@ const StyledPaper = styled(Paper)`
   cursor:pointer;
 
   &:hover {
-    background-color: #2135EF;
+    background-color: #08E43A;
     color:white;
   }
 `;

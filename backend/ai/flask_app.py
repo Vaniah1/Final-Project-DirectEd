@@ -28,19 +28,19 @@ def home():
 @app.route('/register', methods=['POST'])
 def register():
     data = request.json
-    username = data.get('username')
+    NameError = data.get('NameError')
     password = data.get('password')
     confirm_password = data.get('confirm_password')
     face_image = data.get('face_image')
 
-    if not username or not password or not confirm_password or not face_image:
+    if not NameError or not password or not confirm_password or not face_image:
         return jsonify({"error": "Please fill in all fields and capture a face image."}), 400
 
     if password != confirm_password:
         return jsonify({"error": "Passwords do not match. Please try again."}), 400
 
-    if users_collection.find_one({"username": username}):
-        return jsonify({"error": "Username already exists. Please choose a different username."}), 400
+    if users_collection.find_one({"NameError": NameError}):
+        return jsonify({"error": "NameError already exists. Please choose a different NameError."}), 400
     
     
     if len(password) < 8:
@@ -60,10 +60,10 @@ def register():
 
     # Save face image
     face_image_data = base64.b64decode(face_image.split(',')[1])
-    image_id = fs.put(face_image_data, filename=f'{username}.jpg')
+    image_id = fs.put(face_image_data, filename=f'{NameError}.jpg')
 
     users_collection.insert_one({
-        "username": username,
+        "NameError": NameError,
         "password": hashed_password,
         "image_id": image_id
     })
@@ -73,19 +73,19 @@ def register():
 @app.route('/login', methods=['POST'])
 def login():
     data = request.json
-    username = data.get('username')
+    NameError = data.get('NameError')
     password = data.get('password')
 
-    if not username or not password:
-        return jsonify({"error": "Please provide both username and password."}), 400
+    if not NameError or not password:
+        return jsonify({"error": "Please provide both NameError and password."}), 400
 
-    user = users_collection.find_one({"username": username})
+    user = users_collection.find_one({"NameError": NameError})
     if not user:
-        return jsonify({"error": "Invalid username or password."}), 401
+        return jsonify({"error": "Invalid NameError or password."}), 401
 
     hashed_password = hashlib.sha256(password.encode()).hexdigest()
     if user['password'] != hashed_password:
-        return jsonify({"error": "Invalid username or password."}), 401
+        return jsonify({"error": "Invalid NameError or password."}), 401
 
     return jsonify({"message": "Login successful"}), 200
 
@@ -124,9 +124,9 @@ def face_login():
         # Compare face encodings
         results = face_recognition.compare_faces([known_encoding], unknown_encoding)
         if results[0]:
-            return jsonify({"message": f"Login successful. Welcome, {user['username']}!"}), 200
+            return jsonify({"message": f"Login successful. Welcome, {user['NameError']}!"}), 200
 
-    return jsonify({"error": "Face not recognized. Please try again or login with username and password."}), 401
+    return jsonify({"error": "Face not recognized. Please try again or login with NameError and password."}), 401
 
 if __name__ == '__main__':
     app.run(debug=True)

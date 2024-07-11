@@ -5,7 +5,7 @@ const TypingEffect = () => {
   const [text, setText] = useState('');
   const [index, setIndex] = useState(0);
   const [deleting, setDeleting] = useState(false);
-  const words = ['Streamline school management', ' class organization','add students and faculty','and provide feedback.','Access records','view marks','and communicate effortlessly'];
+  const words = ['Streamline school management', ' Class organization','Add students and faculty','And provide feedback.','Access records','View marks','And communicate effortlessly'];
 
   useEffect(() => {
     const handleTyping = () => {
@@ -31,7 +31,7 @@ const TypingEffect = () => {
   }, [text, deleting, index]);
 
   return (
-    <div className="typing-effect">
+    <div className="typing-effect mt-2 ">
       <span className='text'>{text}</span>
       <span className="cursor">|</span>
     </div>

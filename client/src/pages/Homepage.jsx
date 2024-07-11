@@ -8,6 +8,7 @@ import TypingEffect from '../components/TypeEffect';
 import MenuBookIcon from '@mui/icons-material/MenuBook';
 import GoogleIcon from '@mui/icons-material/Google';
 
+
 const Homepage = React.memo(() => {
     return (
         <>

@@ -71,9 +71,9 @@ const AdminDashboard = () => {
                             variant="h6"
                             color="inherit"
                             noWrap
-                            sx={{ flexGrow: 1 }}
+                            sx={{ flexGrow: 1,fontWeight: 'bold',fontSize: '28px' }}
                         >
-                            Admin Dashboard
+                            E-Chuo
                         </Typography>
                         <AccountMenu />
                     </Toolbar>

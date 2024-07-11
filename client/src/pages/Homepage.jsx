@@ -12,8 +12,8 @@ import GoogleIcon from '@mui/icons-material/Google';
 const Homepage = React.memo(() => {
     return (
         <>
-            <nav className='p-2 bg-blue1 sticky rounded-xl aria w-full h-[150px] text-3xl font-bold pt-12 pb-auto flex '>                
-                <MenuBookIcon sx={{ color: 'white', fontSize: '4rem',marginLeft:"3px", marginRight: '8px', alignItems: 'center', display: 'inline-flex', verticalAlign: 'middle' }} /><h1 className='[color:white] items-center'>E-CHUO</h1>
+            <nav className='p-2 bg-blue1 sticky aria w-full h-[90px] text-3xl  pt-3 pb-auto flex mb-20'>                
+                <MenuBookIcon sx={{ color: 'white', fontSize: '4rem',marginLeft:"3px", marginRight: '8px', alignItems: 'center', display: 'inline-flex', verticalAlign: 'middle' }} /><h1 className='[color:white] items-center pt-4 font-bold'>Escuela</h1>
                 
             </nav>
 

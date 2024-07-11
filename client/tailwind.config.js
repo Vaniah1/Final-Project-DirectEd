@@ -10,6 +10,8 @@ export default {
       "blue2": "#2135EF",
       "orange":"#D8D9A6",
       "green":"#BEDBC5",
+      "green1":"#28A745",
+      "green2":"08E43A",
       "gray":"#D9D9D9",
       "red":"#FF0000",
       "lightblue":"#B9D2DA",

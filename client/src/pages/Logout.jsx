@@ -32,29 +32,33 @@ const Logout = () => {
 export default Logout;
 
 const LogoutContainer = styled.div`
+  margin-left: 500px;
+  margin-top:150px;
+  width: 600px;
   border: 1px solid #ccc;
   border-radius: 10px;
-  padding: 20px;
+  padding: 30px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
-  background-color: #85769f66;
-  color: black;
+  background-color: #08E43A;
+  color: white;
 `;
 
 const LogoutMessage = styled.p`
   margin-bottom: 20px;
-  font-size: 16px;
+  font-size: 24px;
   text-align: center;
 `;
 
 const LogoutButton = styled.button`
-  padding: 10px 20px;
+  width: 220px;
+  padding: 10px 40px;
   margin-top: 10px;
   border-radius: 5px;
-  font-size: 16px;
+  font-size: 20px;
   color: #fff;
   cursor: pointer;
 

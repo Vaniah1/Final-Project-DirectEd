@@ -69,7 +69,7 @@ const AdminHomePage = () => {
                             <Title>
                                 Total Fees Paid
                             </Title>
-                            <Data start={0} end={250000} duration={6} prefix="Ksh " />                        </StyledPaper>
+                            <Data start={0} end={776482} duration={20} prefix="Ksh " />                        </StyledPaper>
                     </Grid>
                     <Grid item xs={12} md={12} lg={12}>
                         <Paper sx={{ p: 2, display: 'flex', flexDirection: 'column' }}>

@@ -38,7 +38,7 @@ const Homepage = React.memo(() => {
                                 <StyledBox>
 
                                     <StyledLink to="/choose" aria-label="Login">
-                                        <Button sx={{color: "#FFFFFF", marginBottom: "1rem", backgroundColor: "#4254F1", borderRadius: "15px", padding: "7px",}}  variant="outlined" fullWidth>
+                                        <Button sx={{color: "#FFFFFF", marginBottom: "1rem", backgroundColor:"green", borderRadius: "15px", padding: "7px",}}  variant="outlined" fullWidth>
                                             Login
                                         </Button>
                                     </StyledLink>

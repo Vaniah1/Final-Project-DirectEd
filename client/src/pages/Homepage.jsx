@@ -13,7 +13,7 @@ import { blue } from '@mui/material/colors';
 const Homepage = React.memo(() => {
     return (
         <>
-            <nav className='p-2 bg-blue1 sticky aria w-full h-[90px] text-3xl  pt-3 pb-auto flex mb-20'>                
+            <nav className='p-2 bg-green1 sticky aria w-full h-[90px] text-3xl  pt-3 pb-auto flex mb-20'>                
                 <MenuBookIcon sx={{ color: 'white', fontSize: '4rem',marginLeft:"3px", marginRight: '8px', alignItems: 'center', display: 'inline-flex', verticalAlign: 'middle' }} /><h1 className='[color:white] items-center pt-4 font-bold'>AcademiHub</h1>
                 
             </nav>
@@ -38,7 +38,7 @@ const Homepage = React.memo(() => {
                                 <StyledBox>
 
                                     <StyledLink to="/choose" aria-label="Login">
-                                        <Button sx={{color: "#FFFFFF", marginBottom: "1rem", backgroundColor:"green", borderRadius: "15px", padding: "7px",}}  variant="outlined" fullWidth>
+                                        <Button sx={{color: "#FFFFFF", marginBottom: "1rem",backgroundColor:"green", borderRadius: "15px", padding: "7px",}}  variant="outlined" fullWidth>
                                             Login
                                         </Button>
                                     </StyledLink>

@@ -24,7 +24,7 @@ const adminSchema = new mongoose.Schema({
         required: true
     },
     encoding:{
-        type: String,
+        type: Array,
         required: true
 
     },

@@ -10,7 +10,7 @@ const ChatbotComponent = () => {
   const toggleChat = () => {
     setIsVisible(!isVisible);
   };
-
+  
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (chatbotRef.current && !chatbotRef.current.contains(event.target)) {

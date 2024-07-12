@@ -11,7 +11,7 @@ const Popup = ({ message, setShowPopup, showPopup }) => {
     const vertical = "top"
     const horizontal = "right"
 
-    const handleClose = (event, reason) => {
+    const handleClose = (event, reason) => {cd 
         if (reason === 'clickaway') {
             return;
         }

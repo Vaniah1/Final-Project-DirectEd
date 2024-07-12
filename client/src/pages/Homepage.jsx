@@ -15,7 +15,7 @@ import stude from "../assets/bts4.svg"
 
 const Homepage = React.memo(() => {
   return (
-      <div className="bg-[url('/path/to/your/image.jpg')] bg-cover bg-center bg-no-repeat min-h-screen">
+      <div className="bg-[url('/path/to/your/image.jpg')] bg-cover bg-center bg-no-repeat min-h-screen bg-greenbackground">
           <nav className='p-2 bg-blue1 sticky aria w-full h-[80px] text-3xl  pb-2 pb-auto flex mb-20'>                
               <MenuBookIcon sx={{ color: 'white', fontSize: '4rem',marginLeft:"3px", marginRight: '8px', alignItems: 'center', display: 'inline-flex', verticalAlign: 'middle' }} />
               <h1 className='[color:white] items-center pt-4 font-bold'>AcademiHub</h1>
@@ -49,7 +49,7 @@ const Homepage = React.memo(() => {
 
                                   <StyledLink to="/Adminlogin" aria-label="Login as Guest">
                                       <Button variant="outlined" fullWidth
-                                          sx={{ mt: 1, color: "#008000", borderColor: "#008000",borderRadius: "15px", padding: "5" }} className='text-white p-5 rounded mt-1 text-blue1'>
+                                          sx={{ mt: 1, color: "#000000", borderColor: "#000000",borderRadius: "15px", padding: "5", backgroundColor: "white" }} className='text-white p-5 rounded mt-1 text-blue1'>
                                         
                                           <GoogleIcon sx={{marginRight:"15px"}}/>
                                           Login with Google

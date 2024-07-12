@@ -73,7 +73,7 @@ const AdminDashboard = () => {
                             noWrap
                             sx={{ flexGrow: 1,fontWeight: 'bold',fontSize: '28px' }}
                         >
-                            E-Chuo
+                            AcademiHub
                         </Typography>
                         <AccountMenu />
                     </Toolbar>

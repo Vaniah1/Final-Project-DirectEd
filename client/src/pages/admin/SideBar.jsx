@@ -11,6 +11,7 @@ import ClassOutlinedIcon from '@mui/icons-material/ClassOutlined';
 import SupervisorAccountOutlinedIcon from '@mui/icons-material/SupervisorAccountOutlined';
 import ReportIcon from '@mui/icons-material/Report';
 import AssignmentIcon from '@mui/icons-material/Assignment';
+import VideoCallIcon from '@mui/icons-material/VideoCall';
 
 const SideBar = () => {
     const location = useLocation();
@@ -35,6 +36,7 @@ const SideBar = () => {
                     </ListItemIcon>
                     <ListItemText primary="Subjects" />
                 </ListItemButton>
+                
                 <ListItemButton component={Link} to="/Admin/teachers">
                     <ListItemIcon>
                         <SupervisorAccountOutlinedIcon color={location.pathname.startsWith("/Admin/teachers") ? 'primary' : 'inherit'} />

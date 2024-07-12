@@ -17,7 +17,7 @@ const ChatbotComponent = () => {
       </ChatToggleButton>
       {isVisible && (
         <ChatWindow>
-          <ChatHeader>AcademiHub ChatBot</ChatHeader>
+          <ChatHeader>AcademiHub Copilot</ChatHeader>
           <ChatFrame
             src="https://echuo-ai.onrender.com/"
             width="100%"

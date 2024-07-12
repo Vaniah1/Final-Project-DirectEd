@@ -89,7 +89,6 @@ const StudentDashboard = () => {
     );
 }
 
-export default StudentDashboard
 
 const styles = {
     boxStyled: {
@@ -117,3 +116,5 @@ const styles = {
         },
     },
 }
+
+export default StudentDashboard

@@ -22,7 +22,7 @@ import AccountMenu from '../../components/AccountMenu';
 import { AppBar, Drawer } from '../../components/styles';
 import IncomingLessonAlert from './VideoCall';
 
-const StudentDashboard = () => {
+const StudentDash = () => {
     const [open, setOpen] = useState(true);
     const toggleDrawer = () => {
         setOpen(!open);
@@ -119,4 +119,4 @@ const styles = {
 }
 
 
-export default StudentDashboard
+export default StudentDash

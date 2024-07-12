@@ -140,12 +140,12 @@ const StudentHomePage = () => {
                     className="bg-white rounded-lg shadow-md p-6"
                 >
                     <h2 className="text-xl font-semibold mb-4">Student Detail</h2>
-                    <p className="mb-2">Date of Birth: {currentUser.dateOfBirth}</p>
-                    <p className="mb-2">Class: {currentUser.sclassName.name}</p>
+                    <p className="mb-2">Date of Birth: 25th December 2024{currentUser.dateOfBirth}</p>
+                    <p className="mb-2">Class: Class A{currentUser.sclassName.name}</p>
                     <p className="mb-2">Roll Number: {currentUser.rollNum}</p>
-                    <p className="mb-2">Phone Number: {currentUser.phoneNumber}</p>
-                    <p className="mb-2">Father Name: {currentUser.fatherName}</p>
-                    <p>Address: {currentUser.address}</p>
+                    <p className="mb-2">Phone Number: 070011223344{currentUser.phoneNumber}</p>
+                    <p className="mb-2">Father Name: Daddy Papa{currentUser.fatherName}</p>
+                    <p>Address: Mobile Street PO BOX 123-20 {currentUser.address}</p>
                 </motion.div>
                 <motion.div 
                     initial={{ opacity: 0, x: 50 }}

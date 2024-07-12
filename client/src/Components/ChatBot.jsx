@@ -1,23 +1,42 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import styled from 'styled-components';
 import ChatBubbleOutlineIcon from '@mui/icons-material/ChatBubbleOutline';
 import CloseIcon from '@mui/icons-material/Close';
 
 const ChatbotComponent = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const chatbotRef = useRef(null);
 
   const toggleChat = () => {
     setIsVisible(!isVisible);
   };
 
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (chatbotRef.current && !chatbotRef.current.contains(event.target)) {
+        setIsVisible(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
+
   return (
-    <ChatbotContainer>
-      <ChatToggleButton onClick={toggleChat}>
-        {isVisible ? <CloseIcon /> : <ChatBubbleOutlineIcon />}
+    <ChatbotContainer ref={chatbotRef}>
+      <ChatToggleButton onClick={toggleChat} aria-label={isVisible ? "Close chat" : "Open chat"}>
+        {isVisible ? <CloseIcon aria-hidden="true" /> : <ChatBubbleOutlineIcon aria-hidden="true" />}
       </ChatToggleButton>
       {isVisible && (
-        <ChatWindow>
-          <ChatHeader>AcademiHub Copilot</ChatHeader>
+        <ChatWindow role="dialog" aria-label="Chat window">
+          <ChatHeader>
+            <span aria-label="Chat title">AcademiHub Copilot</span>
+            <CloseButton onClick={toggleChat} aria-label="Close chat">
+              <CloseIcon aria-hidden="true" />
+            </CloseButton>
+          </ChatHeader>
           <ChatFrame
             src="https://echuo-ai.onrender.com/"
             width="100%"
@@ -25,6 +44,8 @@ const ChatbotComponent = () => {
             frameBorder="0"
             allow="microphone *"
             referrerPolicy="no-referrer"
+            title="Chat interface"
+            aria-label="Chat interface"
           ></ChatFrame>
         </ChatWindow>
       )}
@@ -36,14 +57,14 @@ const ChatbotContainer = styled.div`
   position: fixed;
   bottom: 20px;
   right: 20px;
-  z-index: 1000;
-
+  z-index: 100000;
 `;
 
 const ChatToggleButton = styled.button`
   position: absolute;
   bottom: 0;
   right: 0;
+  z-index:9999;
   width: 80px;
   height: 80px;
   border-radius: 50%;
@@ -66,18 +87,27 @@ const ChatToggleButton = styled.button`
 `;
 
 const ChatWindow = styled.div`
-  position: absolute;
-  bottom: 80px;
+  position: fixed;
+  bottom: 0;
   right: 0;
-  width: 500px;
-  height: 500px;
+  z-index: 20000;
+  width: 100%;
+  height: 90%;
   background-color: white;
-  border-radius: 12px;
   overflow: hidden;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
   display: flex;
   flex-direction: column;
   transition: all 0.3s ease;
+
+  @media (min-width: 768px) {
+    position: absolute;
+    bottom: 80px;
+    right: 0;
+    width: 300px;
+    height: 450px;
+    border-radius: 12px;
+  }
 `;
 
 const ChatHeader = styled.div`
@@ -88,6 +118,25 @@ const ChatHeader = styled.div`
   font-size: 18px;
   text-align: center;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
+
+const CloseButton = styled.button`
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  svg {
+    width: 24px;
+    height: 24px;
+  }
 `;
 
 const ChatFrame = styled.iframe`

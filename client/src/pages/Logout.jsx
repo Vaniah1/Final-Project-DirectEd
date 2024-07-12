@@ -43,22 +43,22 @@ const LogoutWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: #D9D9D9;
 `;
 
 const LogoutContainer = styled.div`
-  border: 1px solid #ccc;
+  border: 1px solid #08E43A;
   border-radius: 10px;
-  padding: 20px;
+  padding: 40px;
   z-index: 100;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
-  background-color: #D9D9D9;
+  background-color: #08E43A;
   color: black;
-  font-size: 20px;
+  font-size: 24px;
   font-weight: bold;
 `;
 
@@ -71,6 +71,7 @@ const LogoutMessage = styled.p`
 `;
 
 const LogoutButton = styled.button`
+  width: 200px;
   padding: 10px 20px;
   margin-top: 10px;
   border-radius: 5px;

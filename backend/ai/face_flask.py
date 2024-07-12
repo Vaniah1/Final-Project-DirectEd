@@ -13,6 +13,7 @@ client = MongoClient('mongodb://localhost:27017/')
 db = client['face_recognition']
 collection = db['users']
 
+
 @app.route('/capture_and_store', methods=['POST'])
 def capture_and_store():
     try:

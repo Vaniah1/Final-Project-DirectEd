@@ -2,7 +2,6 @@ import cv2
 import face_recognition
 import uuid
 from pymongo import MongoClient
-import flask 
 
 # Connect to MongoDB
 client = MongoClient('mongodb://localhost:27017/')

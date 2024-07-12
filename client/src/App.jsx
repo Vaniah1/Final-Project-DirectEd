@@ -7,7 +7,7 @@ import TeacherDashboard from './pages/teacher/TeacherDashboard.jsx';
 import LoginPage from './pages/LoginPage.jsx';
 import AdminRegisterPage from './pages/admin/AdminRegisterPage.jsx';
 import ChooseUser from './pages/ChooseUser.jsx';
-import Studentdashboard from './pages/Homepage-student/Studentdashboard';
+import Studentdashboard from './pages/Homepage-student/StudentDashboard.jsx';
 import ChatbotComponent from './components/ChatBot.jsx';
 const App = () => {
   const { currentRole } = useSelector(state => state.user);

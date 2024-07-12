@@ -3,10 +3,10 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-d
 import { useSelector } from 'react-redux';
 import Homepage from './pages/Homepage';
 import AdminDashboard from './pages/admin/AdminDashboard';
-import StudentDashboard from './pages/Homepage-student/StudentDashboard';
-import TeacherDashboard from './pages/teacher/TeacherDashboard';
-import LoginPage from './pages/LoginPage';
-import AdminRegisterPage from './pages/admin/AdminRegisterPage';
+const StudentDashboard = React.lazy(() => import('./pages/Homepage-student/StudentDashboard'));
+import TeacherDashboard from './pages/teacher/TeacherDashboard.jsx';
+import LoginPage from './pages/LoginPage.jsx';
+import AdminRegisterPage from './pages/admin/AdminRegisterPage.jsx';
 import ChooseUser from './pages/ChooseUser';
 import ChatbotComponent from "./components/ChatBot";
 const App = () => {

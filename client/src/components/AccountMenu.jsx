@@ -95,7 +95,7 @@ const styles = {
             right: 14,
             width: 10,
             height: 10,
-            bgcolor: 'background.paper',
+            bgcolor: '#08E43A',
             transform: 'translateY(-50%) rotate(45deg)',
             zIndex: 0,
         },

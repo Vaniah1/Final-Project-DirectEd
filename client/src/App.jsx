@@ -7,15 +7,16 @@ import TeacherDashboard from './pages/teacher/TeacherDashboard.jsx';
 import LoginPage from './pages/LoginPage.jsx';
 import AdminRegisterPage from './pages/admin/AdminRegisterPage.jsx';
 import ChooseUser from './pages/ChooseUser.jsx';
-import ChatbotComponent from "./components/ChatBot.jsx";
 import StudentDashboard from './pages/Homepage-student/StudentDashboard.jsx';
+import ChatbotComponent from './components/Chatbot.jsx';
 const App = () => {
   const { currentRole } = useSelector(state => state.user);
 
-  return (
-
-    <Router>
-      <ChatbotComponent />
+  return (  
+    <>
+    <ChatbotComponent />
+      <Router>
+      
       {currentRole === null &&
         
         <Routes>
@@ -50,7 +51,11 @@ const App = () => {
         </>
       }
     </Router>
+    </>
+
+    
   )
 }
+
 
 export default App

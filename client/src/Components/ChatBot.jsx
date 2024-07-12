@@ -53,6 +53,8 @@ const ChatbotComponent = () => {
   );
 };
 
+export default ChatbotComponent;
+
 const ChatbotContainer = styled.div`
   position: fixed;
   bottom: 20px;
@@ -144,4 +146,3 @@ const ChatFrame = styled.iframe`
   border: none;
 `;
 
-export default ChatbotComponent;

@@ -41,7 +41,7 @@ const App = () => {
 
       {currentRole === "Student" &&
         <>
-          <Studentdashboard />
+          <StudentDash />
         </>
       }
 

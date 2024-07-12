@@ -20,43 +20,43 @@ const SideBar = () => {
             <React.Fragment>
                 <ListItemButton component={Link} to="/" aria-label="Home">
                     <ListItemIcon>
-                        <HomeIcon color={location.pathname === ("/" || "/Admin/dashboard") ? 'primary' : 'inherit'} />
+                        <HomeIcon sx={{ color: location.pathname === ("/" || "/Admin/dashboard") ? '#28A745' : 'inherit' }} />
                     </ListItemIcon>
                     <ListItemText primary="Home" />
                 </ListItemButton>
                 <ListItemButton component={Link} to="/Admin/classes" aria-label="Classes">
                     <ListItemIcon>
-                        <ClassOutlinedIcon color={location.pathname.startsWith('/Admin/classes') ? 'primary' : 'inherit'} />
+                        <ClassOutlinedIcon sx={{ color: location.pathname.startsWith('/Admin/classes') ? '#28A745' : 'inherit' }} />
                     </ListItemIcon>
                     <ListItemText primary="Classes" />
                 </ListItemButton>
                 <ListItemButton component={Link} to="/Admin/subjects" aria-label="Subjects">
                     <ListItemIcon>
-                        <AssignmentIcon color={location.pathname.startsWith("/Admin/subjects") ? 'primary' : 'inherit'} />
+                        <AssignmentIcon sx={{ color: location.pathname.startsWith("/Admin/subjects") ? '#28A745' : 'inherit' }} />
                     </ListItemIcon>
                     <ListItemText primary="Subjects" />
                 </ListItemButton>
                 <ListItemButton component={Link} to="/Admin/teachers" aria-label="Teachers">
                     <ListItemIcon>
-                        <SupervisorAccountOutlinedIcon color={location.pathname.startsWith("/Admin/teachers") ? 'primary' : 'inherit'} />
+                        <SupervisorAccountOutlinedIcon sx={{ color: location.pathname.startsWith("/Admin/teachers") ? '#28A745' : 'inherit' }} />
                     </ListItemIcon>
                     <ListItemText primary="Teachers" />
                 </ListItemButton>
                 <ListItemButton component={Link} to="/Admin/students" aria-label="Students">
                     <ListItemIcon>
-                        <PersonOutlineIcon color={location.pathname.startsWith("/Admin/students") ? 'primary' : 'inherit'} />
+                        <PersonOutlineIcon sx={{ color: location.pathname.startsWith("/Admin/students") ? '#28A745' : 'inherit' }} />
                     </ListItemIcon>
                     <ListItemText primary="Students" />
                 </ListItemButton>
                 <ListItemButton component={Link} to="/Admin/notices" aria-label="Notices">
                     <ListItemIcon>
-                        <AnnouncementOutlinedIcon color={location.pathname.startsWith("/Admin/notices") ? 'primary' : 'inherit'} />
+                        <AnnouncementOutlinedIcon sx={{ color: location.pathname.startsWith("/Admin/notices") ? '#28A745' : 'inherit' }} />
                     </ListItemIcon>
                     <ListItemText primary="Notices" />
                 </ListItemButton>
                 <ListItemButton component={Link} to="/Admin/complains" aria-label="Complains">
                     <ListItemIcon>
-                        <ReportIcon color={location.pathname.startsWith("/Admin/complains") ? 'primary' : 'inherit'} />
+                        <ReportIcon sx={{ color: location.pathname.startsWith("/Admin/complains") ? '#28A745' : 'inherit' }} />
                     </ListItemIcon>
                     <ListItemText primary="Complains" />
                 </ListItemButton>
@@ -68,13 +68,13 @@ const SideBar = () => {
                 </ListSubheader>
                 <ListItemButton component={Link} to="/Admin/profile" aria-label="Profile">
                     <ListItemIcon>
-                        <AccountCircleOutlinedIcon color={location.pathname.startsWith("/Admin/profile") ? 'primary' : 'inherit'} />
+                        <AccountCircleOutlinedIcon sx={{ color: location.pathname.startsWith("/Admin/profile") ? '#28A745' : 'inherit' }} />
                     </ListItemIcon>
                     <ListItemText primary="Profile" />
                 </ListItemButton>
                 <ListItemButton component={Link} to="/logout" aria-label="Logout">
                     <ListItemIcon>
-                        <ExitToAppIcon color={location.pathname.startsWith("/logout") ? 'primary' : 'inherit'} />
+                        <ExitToAppIcon sx={{ color: location.pathname.startsWith("/logout") ? '#28A745' : 'inherit' }} />
                     </ListItemIcon>
                     <ListItemText primary="Logout" />
                 </ListItemButton>

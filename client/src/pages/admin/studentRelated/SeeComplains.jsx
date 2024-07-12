@@ -7,10 +7,10 @@ import { getAllComplains } from '../../../redux/complainRelated/complainHandle';
 import TableTemplate from '../../../components/TableTemplate';
 
 const SeeComplains = () => {
-
-  const label = { inputProps: { 'aria-label': 'Checkbox demo' } };  const dispatch = useDispatch();
+  const label = { inputProps: { 'aria-label': 'Checkbox demo' } };  
+  const dispatch = useDispatch();
   const { complainsList, loading, error, response } = useSelector((state) => state.complain);
-  const { currentUser } = useSelector(state => state.user)
+  const { currentUser } = useSelector(state => state.user);
 
   useEffect(() => {
     dispatch(getAllComplains(currentUser._id, "Complain"));
@@ -30,7 +30,7 @@ const SeeComplains = () => {
     const date = new Date(complain.date);
     const dateString = date.toString() !== "Invalid Date" ? date.toISOString().substring(0, 10) : "Invalid Date";
     return {
-      user: complain.user.name,
+      user: complain.user && complain.user.name ? complain.user.name : 'Unknown User',
       complaint: complain.complaint,
       date: dateString,
       id: complain._id,

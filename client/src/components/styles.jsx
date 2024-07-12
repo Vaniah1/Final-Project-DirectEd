@@ -11,7 +11,7 @@ const drawerWidth = 240
 
 export const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
-        backgroundColor: theme.palette.common.black,
+        backgroundColor: "#28A745",
         color: theme.palette.common.white,
     },
     [`&.${tableCellClasses.body}`]: {

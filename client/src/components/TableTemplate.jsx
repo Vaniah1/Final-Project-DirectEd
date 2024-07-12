@@ -17,7 +17,7 @@ const StyledTable = styled(Table)(({ theme }) => ({
 }));
 
 const StyledTableHead = styled(TableHead)(({ theme }) => ({
-    backgroundColor: theme.palette.primary.main,
+    backgroundColor: '#28A745',
     '& .MuiTableCell-root': {
         color: theme.palette.common.white,
         fontWeight: 'bold',

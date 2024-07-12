@@ -5,9 +5,9 @@ from pymongo import MongoClient
 import flask 
 
 # Connect to MongoDB
-client = MongoClient('mongodb://localhost:27017/')
-db = client['face_recognition']
-collection = db['users']
+client = MongoClient('mongodb+srv://smash:smash@learn.c1mgxaw.mongodb.net/?retryWrites=true&w=majority&appName=Learn')
+db = client['Final SMS']
+collection = db['admins']
 
 def capture_image():
     cap = cv2.VideoCapture(0)

@@ -18,6 +18,16 @@ const adminSchema = new mongoose.Schema({
         type: String,
         default: "Admin"
     },
+    faceId:{
+        type: String,
+        unique: true,
+        required: true
+    },
+    encoding:{
+        type: String,
+        required: true
+
+    },
     schoolName: {
         type: String,
         unique: true,

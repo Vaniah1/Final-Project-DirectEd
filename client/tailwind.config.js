@@ -6,8 +6,8 @@ export default {
   ],
   theme: {
     colors:{
-      "blue1":"#0C1FC8",
-      "blue2": "#2135EF",
+      "blue1":" #28A745",
+      "blue2": "#08E43A",
       "orange":"#D8D9A6",
       "green":"#BEDBC5",
       "gray":"#D9D9D9",

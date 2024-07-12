@@ -13,13 +13,13 @@ import Popup from '../components/Popup';
 const theme = createTheme({
   palette: {
     primary: {
-      main: '#4CAF50',
+      main: '#28A745',
     },
     secondary: {
-      main: '#FFA500',
+      main: '#08E43A',
     },
     background: {
-      default: '#f5f5f5',
+      default: '#ffffff',
     },
   },
   typography: {
@@ -98,7 +98,7 @@ const LoginPage = ({ role }) => {
                             alignItems: 'center',
                         }}
                     >
-                        <Typography variant="h4" sx={{ mb: 2, color: "#2c2143", fontWeight: 'bold' }}>
+                        <Typography variant="h4" sx={{ mb: 2, color: "#28A745", fontWeight: 'bold' }}>
                             {role} Login
                         </Typography>
                         <Typography variant="subtitle1" sx={{ mb: 3 }}>
@@ -147,15 +147,15 @@ const LoginPage = ({ role }) => {
                                 control={<Checkbox value="remember" color="primary" />}
                                 label="Remember me"
                             />
-                            <LightPurpleButton
+                            <Button
                                 type="submit"
                                 fullWidth
                                 variant="contained"
-                                sx={{ mt: 3, mb: 2 }}
+                                sx={{ mt: 3, mb: 2,backgroundColor:"#28A745" }}
                                 disabled={loading}
                             >
                                 {loading ? <CircularProgress size={24} /> : "Login"}
-                            </LightPurpleButton>
+                            </Button>
                             {role === "Admin" && (
                                 <Grid container justifyContent="flex-end">
                                     <Grid item>

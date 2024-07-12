@@ -43,7 +43,7 @@ const LogoutWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #D9D9D9;
+  background-color: #DCFFD9;
 `;
 
 const LogoutContainer = styled.div`

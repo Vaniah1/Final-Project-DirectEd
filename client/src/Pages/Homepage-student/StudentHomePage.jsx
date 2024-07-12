@@ -68,7 +68,7 @@ const StudentHomePage = () => {
                 initial={{ opacity: 0, y: -50 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
-                className="bg-gradient-to-r from-green-400 to-blue-500 rounded-lg shadow-lg p-6 mb-8"
+                className="bg-gradient-to-r from-green-400 to-blue-500 rounded-lg shadow-lg p-6 mb-8 "
             >
                 <div className="flex justify-between items-center">
                     <div className="text-white">
@@ -79,10 +79,10 @@ const StudentHomePage = () => {
                     <img src={currentUser.avatar} alt="User Image" className="w-16 h-16 rounded-full" />
                 </div>
             </motion.div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 ">
                 <motion.div 
                     whileHover={{ scale: 1.05 }}
-                    className="bg-white rounded-lg shadow-md p-6 flex flex-col items-center justify-between"
+                    className="bg-green rounded-lg shadow-md p-6 flex flex-col items-center justify-between"
                 >
                     <img src={Subject} alt="Subjects" className="w-16 h-16 mb-4" />
                     <h2 className="text-xl font-semibold mb-2">Total Subjects</h2>
@@ -90,7 +90,7 @@ const StudentHomePage = () => {
                 </motion.div>
                 <motion.div 
                     whileHover={{ scale: 1.05 }}
-                    className="bg-white rounded-lg shadow-md p-6 flex flex-col items-center justify-between"
+                    className="bg-green rounded-lg shadow-md p-6 flex flex-col items-center justify-between"
                 >
                     <img src={Assignment} alt="Assignments" className="w-16 h-16 mb-4" />
                     <h2 className="text-xl font-semibold mb-2">Total Assignments</h2>
@@ -98,7 +98,7 @@ const StudentHomePage = () => {
                 </motion.div>
                 <motion.div 
                     whileHover={{ scale: 1.05 }}
-                    className="bg-white rounded-lg shadow-md p-6 flex flex-col items-center justify-between"
+                    className="bg-green rounded-lg shadow-md p-6 flex flex-col items-center justify-between"
                 >
                     <h2 className="text-xl font-semibold mb-4">Attendance</h2>
                     {response ? (
@@ -115,7 +115,7 @@ const StudentHomePage = () => {
                 </motion.div>
                 <motion.div 
                     whileHover={{ scale: 1.05 }}
-                    className="bg-white rounded-lg shadow-md p-6"
+                    className="bg-green rounded-lg shadow-md p-6"
                 >
                     <h2 className="text-xl font-semibold mb-4">Current Date & Time</h2>
                     <div className="text-center">
@@ -151,7 +151,7 @@ const StudentHomePage = () => {
                     initial={{ opacity: 0, x: 50 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.5, delay: 0.6 }}
-                    className="bg-white rounded-lg shadow-md p-6"
+                    className="bg-white rounded-lg shadow-md p-6 "
                 >
                     <h2 className="text-xl font-semibold mb-4">Upcoming Events</h2>
                     <div className="flex items-center mb-2">

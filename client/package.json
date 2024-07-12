@@ -21,6 +21,7 @@
     "@reduxjs/toolkit": "^2.2.6",
     "antd": "^5.19.1",
     "axios": "^1.7.2",
+    "backend": "file:..",
     "chart.js": "^4.4.3",
     "eslint-config-react-app": "^7.0.1",
     "firebase": "^10.12.3",

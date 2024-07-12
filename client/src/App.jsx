@@ -7,7 +7,7 @@ import TeacherDashboard from './pages/teacher/TeacherDashboard.jsx';
 import LoginPage from './pages/LoginPage.jsx';
 import AdminRegisterPage from './pages/admin/AdminRegisterPage.jsx';
 import ChooseUser from './pages/ChooseUser.jsx';
-import StudentDashboard from './pages/Homepage-student/StudentDashboard.jsx';
+import Studentdashboard from './pages/Homepage-student/Studentdashboard.jsx';
 import ChatbotComponent from './components/Chatbot.jsx';
 const App = () => {
   const { currentRole } = useSelector(state => state.user);
@@ -41,7 +41,7 @@ const App = () => {
 
       {currentRole === "Student" &&
         <>
-          <StudentDashboard />
+          <Studentdashboard />
         </>
       }
 

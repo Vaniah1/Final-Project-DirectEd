@@ -24,6 +24,7 @@ const ChatbotComponent = () => {
             height="100%"
             frameBorder="0"
             allow="microphone *"
+            referrerPolicy="no-referrer"
           ></ChatFrame>
         </ChatWindow>
       )}

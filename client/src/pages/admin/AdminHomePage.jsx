@@ -73,7 +73,7 @@ const AdminHomePage = () => {
                         >
                             <img src={Fees} alt="Fees" className="w-16 h-16 mb-4" aria-label="Fees Icon" />
                             <h2 className="text-xl font-semibold mb-2">Total Fees Paid</h2>
-                            <CountUp start={0} end={250000} duration={6} prefix="Ksh " className="text-3xl font-bold text-purple-600" />
+                            <CountUp start={0} end={854672} duration={20} prefix="Ksh " className="text-3xl font-bold text-purple-600" />
                         </motion.div>
                     </Grid>
                     <Grid item xs={12} md={12} lg={12}>

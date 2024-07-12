@@ -16,7 +16,7 @@ import stude from "../assets/bts4.svg"
 const Homepage = React.memo(() => {
   return (
       <div className="bg-[url('/path/to/your/image.jpg')] bg-cover bg-center bg-no-repeat min-h-screen">
-          <nav className='p-2 bg-blue1 rounded-lg sticky aria w-full h-[105px] text-3xl  pt-3 pb-auto flex mb-20'>                
+          <nav className='p-2 bg-blue1 sticky aria w-full h-[80px] text-3xl  pb-2 pb-auto flex mb-20'>                
               <MenuBookIcon sx={{ color: 'white', fontSize: '4rem',marginLeft:"3px", marginRight: '8px', alignItems: 'center', display: 'inline-flex', verticalAlign: 'middle' }} />
               <h1 className='[color:white] items-center pt-4 font-bold'>AcademiHub</h1>
           </nav>

@@ -125,13 +125,14 @@ const StudentAttendance = ({ situation }) => {
                                     {
                                         situation === "Student" &&
                                         <FormControl fullWidth>
-                                            <InputLabel id="demo-simple-select-label">Select Subject</InputLabel>
+                                            <InputLabel id="select-subject-label">Select Subject</InputLabel>
                                             <Select
-                                                labelId="demo-simple-select-label"
-                                                id="demo-simple-select"
+                                                labelId="select-subject-label"
+                                                id="select-subject"
                                                 value={subjectName}
                                                 label="Choose an option"
                                                 onChange={changeHandler} required
+                                                aria-label="Select Subject"
                                             >
                                                 {subjectsList ?
                                                     subjectsList.map((subject, index) => (
@@ -148,14 +149,15 @@ const StudentAttendance = ({ situation }) => {
                                         </FormControl>
                                     }
                                     <FormControl fullWidth>
-                                        <InputLabel id="demo-simple-select-label">Attendance Status</InputLabel>
+                                        <InputLabel id="select-status-label">Attendance Status</InputLabel>
                                         <Select
-                                            labelId="demo-simple-select-label"
-                                            id="demo-simple-select"
+                                            labelId="select-status-label"
+                                            id="select-status"
                                             value={status}
                                             label="Choose an option"
                                             onChange={(event) => setStatus(event.target.value)}
                                             required
+                                            aria-label="Attendance Status"
                                         >
                                             <MenuItem value="Present">Present</MenuItem>
                                             <MenuItem value="Absent">Absent</MenuItem>
@@ -170,6 +172,7 @@ const StudentAttendance = ({ situation }) => {
                                             InputLabelProps={{
                                                 shrink: true,
                                             }}
+                                            aria-label="Select Date"
                                         />
                                     </FormControl>
                                 </Stack>
@@ -181,6 +184,7 @@ const StudentAttendance = ({ situation }) => {
                                     variant="contained"
                                     type="submit"
                                     disabled={loader}
+                                    aria-label="Submit Attendance"
                                 >
                                     {loader ? <CircularProgress size={24} color="inherit" /> : "Submit"}
                                 </PurpleButton>
@@ -194,4 +198,4 @@ const StudentAttendance = ({ situation }) => {
     )
 }
 
-export default StudentAttendance
+export default StudentAttendance;

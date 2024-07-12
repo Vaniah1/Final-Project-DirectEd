@@ -124,15 +124,16 @@ const StudentExamMarks = ({ situation }) => {
                                     {
                                         situation === "Student" &&
                                         <FormControl fullWidth>
-                                            <InputLabel id="demo-simple-select-label">
+                                            <InputLabel id="select-subject-label">
                                                 Select Subject
                                             </InputLabel>
                                             <Select
-                                                labelId="demo-simple-select-label"
-                                                id="demo-simple-select"
+                                                labelId="select-subject-label"
+                                                id="select-subject"
                                                 value={subjectName}
                                                 label="Choose an option"
                                                 onChange={changeHandler} required
+                                                aria-label="Select Subject"
                                             >
                                                 {subjectsList ?
                                                     subjectsList.map((subject, index) => (
@@ -149,12 +150,16 @@ const StudentExamMarks = ({ situation }) => {
                                         </FormControl>
                                     }
                                     <FormControl>
-                                        <TextField type="number" label='Enter marks'
-                                            value={marksObtained} required
+                                        <TextField
+                                            type="number"
+                                            label="Enter marks"
+                                            value={marksObtained}
+                                            required
                                             onChange={(e) => setMarksObtained(e.target.value)}
                                             InputLabelProps={{
                                                 shrink: true,
                                             }}
+                                            aria-label="Enter Marks"
                                         />
                                     </FormControl>
                                 </Stack>
@@ -165,6 +170,7 @@ const StudentExamMarks = ({ situation }) => {
                                     variant="contained"
                                     type="submit"
                                     disabled={loader}
+                                    aria-label="Submit Marks"
                                 >
                                     {loader ? <CircularProgress size={24} color="inherit" /> : "Submit"}
                                 </BlueButton>
@@ -178,4 +184,4 @@ const StudentExamMarks = ({ situation }) => {
     )
 }
 
-export default StudentExamMarks
+export default StudentExamMarks;

@@ -18,9 +18,9 @@ const AdminHomePage = () => {
     const { sclassesList } = useSelector((state) => state.sclass);
     const { teachersList } = useSelector((state) => state.teacher);
 
-    const { currentUser } = useSelector(state => state.user)
+    const { currentUser } = useSelector(state => state.user);
 
-    const adminID = currentUser._id
+    const adminID = currentUser._id;
 
     useEffect(() => {
         dispatch(getAllStudents(adminID));
@@ -41,7 +41,7 @@ const AdminHomePage = () => {
                             whileHover={{ scale: 1.05 }}
                             className="bg-white rounded-lg shadow-md p-6 flex flex-col items-center justify-between h-48"
                         >
-                            <img src={Students} alt="Students" className="w-16 h-16 mb-4" />
+                            <img src={Students} alt="Students" className="w-16 h-16 mb-4" aria-label="Students Icon" />
                             <h2 className="text-xl font-semibold mb-2">Total Students</h2>
                             <CountUp start={0} end={numberOfStudents} duration={2.5} className="text-3xl font-bold text-green-600" />
                         </motion.div>
@@ -51,7 +51,7 @@ const AdminHomePage = () => {
                             whileHover={{ scale: 1.05 }}
                             className="bg-white rounded-lg shadow-md p-6 flex flex-col items-center justify-between h-48"
                         >
-                            <img src={Classes} alt="Classes" className="w-16 h-16 mb-4" />
+                            <img src={Classes} alt="Classes" className="w-16 h-16 mb-4" aria-label="Classes Icon" />
                             <h2 className="text-xl font-semibold mb-2">Total Classes</h2>
                             <CountUp start={0} end={numberOfClasses} duration={5} className="text-3xl font-bold text-blue-600" />
                         </motion.div>
@@ -61,7 +61,7 @@ const AdminHomePage = () => {
                             whileHover={{ scale: 1.05 }}
                             className="bg-white rounded-lg shadow-md p-6 flex flex-col items-center justify-between h-48"
                         >
-                            <img src={Teachers} alt="Teachers" className="w-16 h-16 mb-4" />
+                            <img src={Teachers} alt="Teachers" className="w-16 h-16 mb-4" aria-label="Teachers Icon" />
                             <h2 className="text-xl font-semibold mb-2">Total Teachers</h2>
                             <CountUp start={0} end={numberOfTeachers} duration={2.5} className="text-3xl font-bold text-indigo-600" />
                         </motion.div>
@@ -71,7 +71,7 @@ const AdminHomePage = () => {
                             whileHover={{ scale: 1.05 }}
                             className="bg-white rounded-lg shadow-md p-6 flex flex-col items-center justify-between h-48"
                         >
-                            <img src={Fees} alt="Fees" className="w-16 h-16 mb-4" />
+                            <img src={Fees} alt="Fees" className="w-16 h-16 mb-4" aria-label="Fees Icon" />
                             <h2 className="text-xl font-semibold mb-2">Total Fees Paid</h2>
                             <CountUp start={0} end={250000} duration={6} prefix="Ksh " className="text-3xl font-bold text-purple-600" />
                         </motion.div>

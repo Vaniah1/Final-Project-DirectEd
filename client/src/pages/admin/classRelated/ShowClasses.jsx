@@ -17,20 +17,20 @@ import SpeedDialTemplate from '../../../components/SpeedDialTemplate';
 import Popup from '../../../components/Popup';
 
 const ShowClasses = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const { sclassesList, loading, error, getresponse } = useSelector((state) => state.sclass);
-  const { currentUser } = useSelector(state => state.user)
+  const { currentUser } = useSelector(state => state.user);
 
-  const adminID = currentUser._id
+  const adminID = currentUser._id;
 
   useEffect(() => {
     dispatch(getAllSclasses(adminID, "Sclass"));
   }, [adminID, dispatch]);
 
   if (error) {
-    console.log(error)
+    console.log(error);
   }
 
   const [showPopup, setShowPopup] = useState(false);
@@ -39,37 +39,38 @@ const ShowClasses = () => {
   const deleteHandler = (deleteID, address) => {
     console.log(deleteID);
     console.log(address);
-    setMessage("Sorry the delete function has been disabled for now.")
-    setShowPopup(true)
+    setMessage("Sorry the delete function has been disabled for now.");
+    setShowPopup(true);
     // dispatch(deleteUser(deleteID, address))
     //   .then(() => {
     //     dispatch(getAllSclasses(adminID, "Sclass"));
     //   })
-  }
+  };
 
   const sclassColumns = [
     { id: 'name', label: 'Class Name', minWidth: 170 },
-  ]
+  ];
 
   const sclassRows = sclassesList && sclassesList.length > 0 && sclassesList.map((sclass) => {
     return {
       name: sclass.sclassName,
       id: sclass._id,
     };
-  })
+  });
 
   const SclassButtonHaver = ({ row }) => {
     const actions = [
-      { icon: <PostAddIcon />, name: 'Add Subjects', action: () => navigate("/Admin/addsubject/" + row.id) },
-      { icon: <PersonAddAlt1Icon />, name: 'Add Student', action: () => navigate("/Admin/class/addstudents/" + row.id) },
+      { icon: <PostAddIcon aria-label="Add Subjects" />, name: 'Add Subjects', action: () => navigate("/Admin/addsubject/" + row.id) },
+      { icon: <PersonAddAlt1Icon aria-label="Add Student" />, name: 'Add Student', action: () => navigate("/Admin/class/addstudents/" + row.id) },
     ];
     return (
       <ButtonContainer>
-        <IconButton onClick={() => deleteHandler(row.id, "Sclass")} color="secondary">
+        <IconButton onClick={() => deleteHandler(row.id, "Sclass")} color="secondary" aria-label="Delete Class">
           <DeleteIcon color="error" />
         </IconButton>
         <BlueButton variant="contained"
-          onClick={() => navigate("/Admin/classes/class/" + row.id)}>
+          onClick={() => navigate("/Admin/classes/class/" + row.id)}
+          aria-label="View Class">
           View
         </BlueButton>
         <ActionMenu actions={actions} />
@@ -99,9 +100,10 @@ const ShowClasses = () => {
               aria-controls={open ? 'account-menu' : undefined}
               aria-haspopup="true"
               aria-expanded={open ? 'true' : undefined}
+              aria-label="Open Add Menu"
             >
               <h5>Add</h5>
-              <SpeedDialIcon />
+              <SpeedDialIcon aria-label="Speed Dial Icon" />
             </IconButton>
           </Tooltip>
         </Box>
@@ -119,7 +121,7 @@ const ShowClasses = () => {
           anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
         >
           {actions.map((action) => (
-            <MenuItem onClick={action.action}>
+            <MenuItem onClick={action.action} key={action.name}>
               <ListItemIcon fontSize="small">
                 {action.icon}
               </ListItemIcon>
@@ -129,15 +131,15 @@ const ShowClasses = () => {
         </Menu>
       </>
     );
-  }
+  };
 
   const actions = [
     {
-      icon: <AddCardIcon color="primary" />, name: 'Add New Class',
+      icon: <AddCardIcon color="primary" aria-label="Add New Class" />, name: 'Add New Class',
       action: () => navigate("/Admin/addclass")
     },
     {
-      icon: <DeleteIcon color="error" />, name: 'Delete All Classes',
+      icon: <DeleteIcon color="error" aria-label="Delete All Classes" />, name: 'Delete All Classes',
       action: () => deleteHandler(adminID, "Sclasses")
     },
   ];
@@ -150,7 +152,7 @@ const ShowClasses = () => {
         <>
           {getresponse ?
             <Box sx={{ display: 'flex', justifyContent: 'flex-end', marginTop: '16px' }}>
-              <GreenButton variant="contained" onClick={() => navigate("/Admin/addclass")}>
+              <GreenButton variant="contained" onClick={() => navigate("/Admin/addclass")} aria-label="Add Class">
                 Add Class
               </GreenButton>
             </Box>
@@ -195,7 +197,7 @@ const styles = {
       zIndex: 0,
     },
   }
-}
+};
 
 const ButtonContainer = styled.div`
   display: flex;

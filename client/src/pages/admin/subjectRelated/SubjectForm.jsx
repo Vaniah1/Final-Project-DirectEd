@@ -9,20 +9,20 @@ import Popup from '../../../components/Popup';
 const SubjectForm = () => {
     const [subjects, setSubjects] = useState([{ subName: "", subCode: "", sessions: "" }]);
 
-    const dispatch = useDispatch()
-    const navigate = useNavigate()
-    const params = useParams()
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+    const params = useParams();
 
     const userState = useSelector(state => state.user);
     const { status, currentUser, response, error } = userState;
 
-    const sclassName = params.id
-    const adminID = currentUser._id
-    const address = "Subject"
+    const sclassName = params.id;
+    const adminID = currentUser._id;
+    const address = "Subject";
 
     const [showPopup, setShowPopup] = useState(false);
     const [message, setMessage] = useState("");
-    const [loader, setLoader] = useState(false)
+    const [loader, setLoader] = useState(false);
 
     const handleSubjectNameChange = (index) => (event) => {
         const newSubjects = [...subjects];
@@ -43,7 +43,7 @@ const SubjectForm = () => {
     };
 
     const handleAddSubject = () => {
-        setSubjects([...subjects, { subName: "", subCode: "" }]);
+        setSubjects([...subjects, { subName: "", subCode: "", sessions: "" }]);
     };
 
     const handleRemoveSubject = (index) => () => {
@@ -64,32 +64,30 @@ const SubjectForm = () => {
 
     const submitHandler = (event) => {
         event.preventDefault();
-        setLoader(true)
-        dispatch(addStuff(fields, address))
+        setLoader(true);
+        dispatch(addStuff(fields, address));
     };
 
     useEffect(() => {
         if (status === 'added') {
             navigate("/Admin/subjects");
-            dispatch(underControl())
-            setLoader(false)
-        }
-        else if (status === 'failed') {
-            setMessage(response)
-            setShowPopup(true)
-            setLoader(false)
-        }
-        else if (status === 'error') {
-            setMessage("Network Error")
-            setShowPopup(true)
-            setLoader(false)
+            dispatch(underControl());
+            setLoader(false);
+        } else if (status === 'failed') {
+            setMessage(response);
+            setShowPopup(true);
+            setLoader(false);
+        } else if (status === 'error') {
+            setMessage("Network Error");
+            setShowPopup(true);
+            setLoader(false);
         }
     }, [status, navigate, error, response, dispatch]);
 
     return (
         <form onSubmit={submitHandler}>
             <Box mb={2}>
-                <Typography variant="h6" >Add Subjects</Typography>
+                <Typography variant="h6">Add Subjects</Typography>
             </Box>
             <Grid container spacing={2}>
                 {subjects.map((subject, index) => (
@@ -103,6 +101,7 @@ const SubjectForm = () => {
                                 onChange={handleSubjectNameChange(index)}
                                 sx={styles.inputField}
                                 required
+                                inputProps={{ "aria-label": `Subject Name ${index + 1}` }}
                             />
                         </Grid>
                         <Grid item xs={4}>
@@ -114,15 +113,16 @@ const SubjectForm = () => {
                                 onChange={handleSubjectCodeChange(index)}
                                 sx={styles.inputField}
                                 required
+                                inputProps={{ "aria-label": `Subject Code ${index + 1}` }}
                             />
                         </Grid>
-                        <Grid item xs={4}>
+                        <Grid item xs={2}>
                             <TextField
                                 fullWidth
                                 label="Sessions"
                                 variant="outlined"
                                 type="number"
-                                inputProps={{ min: 0 }}
+                                inputProps={{ min: 0, "aria-label": `Sessions ${index + 1}` }}
                                 value={subject.sessions}
                                 onChange={handleSessionsChange(index)}
                                 sx={styles.inputField}
@@ -136,6 +136,7 @@ const SubjectForm = () => {
                                         variant="outlined"
                                         color="primary"
                                         onClick={handleAddSubject}
+                                        aria-label="Add Subject"
                                     >
                                         Add Subject
                                     </Button>
@@ -144,6 +145,7 @@ const SubjectForm = () => {
                                         variant="outlined"
                                         color="error"
                                         onClick={handleRemoveSubject(index)}
+                                        aria-label={`Remove Subject ${index + 1}`}
                                     >
                                         Remove
                                     </Button>
@@ -154,7 +156,13 @@ const SubjectForm = () => {
                 ))}
                 <Grid item xs={12}>
                     <Box display="flex" justifyContent="flex-end">
-                        <Button variant="contained" color="primary" type="submit" disabled={loader}>
+                        <Button
+                            variant="contained"
+                            color="primary"
+                            type="submit"
+                            disabled={loader}
+                            aria-label="Submit"
+                        >
                             {loader ? (
                                 <CircularProgress size={24} color="inherit" />
                             ) : (
@@ -167,9 +175,9 @@ const SubjectForm = () => {
             </Grid>
         </form>
     );
-}
+};
 
-export default SubjectForm
+export default SubjectForm;
 
 const styles = {
     inputField: {

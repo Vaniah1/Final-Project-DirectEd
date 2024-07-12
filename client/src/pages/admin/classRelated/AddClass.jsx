@@ -12,16 +12,16 @@ import styled from "styled-components";
 const AddClass = () => {
     const [sclassName, setSclassName] = useState("");
 
-    const dispatch = useDispatch()
-    const navigate = useNavigate()
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     const userState = useSelector(state => state.user);
     const { status, currentUser, response, error, tempDetails } = userState;
 
-    const adminID = currentUser._id
-    const address = "Sclass"
+    const adminID = currentUser._id;
+    const address = "Sclass";
 
-    const [loader, setLoader] = useState(false)
+    const [loader, setLoader] = useState(false);
     const [message, setMessage] = useState("");
     const [showPopup, setShowPopup] = useState(false);
 
@@ -31,36 +31,32 @@ const AddClass = () => {
     };
 
     const submitHandler = (event) => {
-        event.preventDefault()
-        setLoader(true)
-        dispatch(addStuff(fields, address))
+        event.preventDefault();
+        setLoader(true);
+        dispatch(addStuff(fields, address));
     };
 
     useEffect(() => {
         if (status === 'added' && tempDetails) {
-            navigate("/Admin/classes/class/" + tempDetails._id)
-            dispatch(underControl())
-            setLoader(false)
-        }
-        else if (status === 'failed') {
-            setMessage(response)
-            setShowPopup(true)
-            setLoader(false)
-        }
-        else if (status === 'error') {
-            setMessage("Network Error")
-            setShowPopup(true)
-            setLoader(false)
+            navigate("/Admin/classes/class/" + tempDetails._id);
+            dispatch(underControl());
+            setLoader(false);
+        } else if (status === 'failed') {
+            setMessage(response);
+            setShowPopup(true);
+            setLoader(false);
+        } else if (status === 'error') {
+            setMessage("Network Error");
+            setShowPopup(true);
+            setLoader(false);
         }
     }, [status, navigate, error, response, dispatch, tempDetails]);
+
     return (
         <>
             <StyledContainer>
                 <StyledBox>
-                    <Stack sx={{
-                        alignItems: 'center',
-                        mb: 3
-                    }}>
+                    <Stack sx={{ alignItems: 'center', mb: 3 }}>
                         <img
                             src={Classroom}
                             alt="classroom"
@@ -77,6 +73,9 @@ const AddClass = () => {
                                     setSclassName(event.target.value);
                                 }}
                                 required
+                                inputProps={{
+                                    'aria-label': 'Class Name'
+                                }}
                             />
                             <BlueButton
                                 fullWidth
@@ -85,10 +84,11 @@ const AddClass = () => {
                                 variant="contained"
                                 type="submit"
                                 disabled={loader}
+                                aria-label="Create Class"
                             >
-                                {loader ? <CircularProgress size={24} color="inherit" /> : "Create"}
+                                {loader ? <CircularProgress size={24} color="inherit" aria-label="Loading" /> : "Create"}
                             </BlueButton>
-                            <Button variant="outlined" onClick={() => navigate(-1)}>
+                            <Button variant="outlined" onClick={() => navigate(-1)} aria-label="Go Back">
                                 Go Back
                             </Button>
                         </Stack>

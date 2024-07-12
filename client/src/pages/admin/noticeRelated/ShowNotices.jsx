@@ -13,11 +13,10 @@ import { GreenButton } from '../../../components/buttonStyles';
 import SpeedDialTemplate from '../../../components/SpeedDialTemplate';
 
 const ShowNotices = () => {
-
-    const navigate = useNavigate()
+    const navigate = useNavigate();
     const dispatch = useDispatch();
     const { noticesList, loading, error, response } = useSelector((state) => state.notice);
-    const { currentUser } = useSelector(state => state.user)
+    const { currentUser } = useSelector(state => state.user);
 
     useEffect(() => {
         dispatch(getAllNotices(currentUser._id, "Notice"));
@@ -31,8 +30,8 @@ const ShowNotices = () => {
         dispatch(deleteUser(deleteID, address))
             .then(() => {
                 dispatch(getAllNotices(currentUser._id, "Notice"));
-            })
-    }
+            });
+    };
 
     const noticeColumns = [
         { id: 'title', label: 'Title', minWidth: 170 },
@@ -54,7 +53,10 @@ const ShowNotices = () => {
     const NoticeButtonHaver = ({ row }) => {
         return (
             <>
-                <IconButton onClick={() => deleteHandler(row.id, "Notice")}>
+                <IconButton 
+                    onClick={() => deleteHandler(row.id, "Notice")}
+                    aria-label={`Delete notice titled ${row.title}`}
+                >
                     <DeleteIcon color="error" />
                 </IconButton>
             </>
@@ -64,24 +66,29 @@ const ShowNotices = () => {
     const actions = [
         {
             icon: <NoteAddIcon color="primary" />, name: 'Add New Notice',
-            action: () => navigate("/Admin/addnotice")
+            action: () => navigate("/Admin/addnotice"),
+            ariaLabel: 'Add New Notice'
         },
         {
             icon: <DeleteIcon color="error" />, name: 'Delete All Notices',
-            action: () => deleteHandler(currentUser._id, "Notices")
+            action: () => deleteHandler(currentUser._id, "Notices"),
+            ariaLabel: 'Delete All Notices'
         }
     ];
 
     return (
         <>
             {loading ?
-                <div>Loading...</div>
+                <div aria-live="polite">Loading...</div>
                 :
                 <>
                     {response ?
                         <Box sx={{ display: 'flex', justifyContent: 'flex-end', marginTop: '16px' }}>
-                            <GreenButton variant="contained"
-                                onClick={() => navigate("/Admin/addnotice")}>
+                            <GreenButton
+                                variant="contained"
+                                onClick={() => navigate("/Admin/addnotice")}
+                                aria-label="Add Notice"
+                            >
                                 Add Notice
                             </GreenButton>
                         </Box>

@@ -11,11 +11,8 @@ import { BlackButton, BlueButton, GreenButton } from '../../../components/button
 import TableTemplate from '../../../components/TableTemplate';
 import PersonAddAlt1Icon from '@mui/icons-material/PersonAddAlt1';
 import SpeedDialTemplate from '../../../components/SpeedDialTemplate';
-
-import * as React from 'react';
 import Button from '@mui/material/Button';
 import ButtonGroup from '@mui/material/ButtonGroup';
-// import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import { KeyboardArrowUp, KeyboardArrowDown } from '@mui/icons-material';
 import ClickAwayListener from '@mui/material/ClickAwayListener';
 import Grow from '@mui/material/Grow';
@@ -43,15 +40,8 @@ const ShowStudents = () => {
     const [message, setMessage] = React.useState("");
 
     const deleteHandler = (deleteID, address) => {
-        console.log(deleteID);
-        console.log(address);
         setMessage("Sorry the delete function has been disabled for now.")
         setShowPopup(true)
-
-        // dispatch(deleteUser(deleteID, address))
-        //     .then(() => {
-        //         dispatch(getAllStudents(currentUser._id));
-        //     })
     }
 
     const studentColumns = [
@@ -77,7 +67,6 @@ const ShowStudents = () => {
         const [selectedIndex, setSelectedIndex] = React.useState(0);
 
         const handleClick = () => {
-            console.info(`You clicked ${options[selectedIndex]}`);
             if (selectedIndex === 0) {
                 handleAttendance();
             } else if (selectedIndex === 1) {
@@ -110,65 +99,63 @@ const ShowStudents = () => {
         };
         return (
             <>
-                <IconButton onClick={() => deleteHandler(row.id, "Student")}>
+                <IconButton onClick={() => deleteHandler(row.id, "Student")} aria-label="Delete Student">
                     <PersonRemoveIcon color="error" />
                 </IconButton>
                 <BlueButton variant="contained"
-                    onClick={() => navigate("/Admin/students/student/" + row.id)}>
+                    onClick={() => navigate("/Admin/students/student/" + row.id)} aria-label="View Student">
                     View
                 </BlueButton>
-                <React.Fragment>
-                    <ButtonGroup variant="contained" ref={anchorRef} aria-label="split button">
-                        <Button onClick={handleClick}>{options[selectedIndex]}</Button>
-                        <BlackButton
-                            size="small"
-                            aria-controls={open ? 'split-button-menu' : undefined}
-                            aria-expanded={open ? 'true' : undefined}
-                            aria-label="select merge strategy"
-                            aria-haspopup="menu"
-                            onClick={handleToggle}
-                        >
-                            {open ? <KeyboardArrowUp /> : <KeyboardArrowDown />}
-                        </BlackButton>
-                    </ButtonGroup>
-                    <Popper
-                        sx={{
-                            zIndex: 1,
-                        }}
-                        open={open}
-                        anchorEl={anchorRef.current}
-                        role={undefined}
-                        transition
-                        disablePortal
+                <ButtonGroup variant="contained" ref={anchorRef} aria-label="actions">
+                    <Button onClick={handleClick} aria-label="Actions">{options[selectedIndex]}</Button>
+                    <BlackButton
+                        size="small"
+                        aria-controls={open ? 'actions-menu' : undefined}
+                        aria-expanded={open ? 'true' : undefined}
+                        aria-label="Expand Actions Menu"
+                        aria-haspopup="menu"
+                        onClick={handleToggle}
                     >
-                        {({ TransitionProps, placement }) => (
-                            <Grow
-                                {...TransitionProps}
-                                style={{
-                                    transformOrigin:
-                                        placement === 'bottom' ? 'center top' : 'center bottom',
-                                }}
-                            >
-                                <Paper>
-                                    <ClickAwayListener onClickAway={handleClose}>
-                                        <MenuList id="split-button-menu" autoFocusItem>
-                                            {options.map((option, index) => (
-                                                <MenuItem
-                                                    key={option}
-                                                    disabled={index === 2}
-                                                    selected={index === selectedIndex}
-                                                    onClick={(event) => handleMenuItemClick(event, index)}
-                                                >
-                                                    {option}
-                                                </MenuItem>
-                                            ))}
-                                        </MenuList>
-                                    </ClickAwayListener>
-                                </Paper>
-                            </Grow>
-                        )}
-                    </Popper>
-                </React.Fragment>
+                        {open ? <KeyboardArrowUp /> : <KeyboardArrowDown />}
+                    </BlackButton>
+                </ButtonGroup>
+                <Popper
+                    sx={{
+                        zIndex: 1,
+                    }}
+                    open={open}
+                    anchorEl={anchorRef.current}
+                    role={undefined}
+                    transition
+                    disablePortal
+                >
+                    {({ TransitionProps, placement }) => (
+                        <Grow
+                            {...TransitionProps}
+                            style={{
+                                transformOrigin:
+                                    placement === 'bottom' ? 'center top' : 'center bottom',
+                            }}
+                        >
+                            <Paper>
+                                <ClickAwayListener onClickAway={handleClose}>
+                                    <MenuList id="actions-menu" autoFocusItem>
+                                        {options.map((option, index) => (
+                                            <MenuItem
+                                                key={option}
+                                                disabled={index === 2}
+                                                selected={index === selectedIndex}
+                                                onClick={(event) => handleMenuItemClick(event, index)}
+                                            >
+                                                {option}
+                                            </MenuItem>
+                                        ))}
+                                    </MenuList>
+                                </ClickAwayListener>
+                            </Paper>
+                        </Grow>
+                    )}
+                </Popper>
             </>
         );
     };
@@ -192,7 +179,7 @@ const ShowStudents = () => {
                 <>
                     {response ?
                         <Box sx={{ display: 'flex', justifyContent: 'flex-end', marginTop: '16px' }}>
-                            <GreenButton variant="contained" onClick={() => navigate("/Admin/addstudents")}>
+                            <GreenButton variant="contained" onClick={() => navigate("/Admin/addstudents")} aria-label="Add Students">
                                 Add Students
                             </GreenButton>
                         </Box>

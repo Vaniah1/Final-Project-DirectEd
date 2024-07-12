@@ -169,14 +169,21 @@ const ViewStudent = () => {
                                         <StyledTableCell>{subjectAttendancePercentage}%</StyledTableCell>
                                         <StyledTableCell align="center">
                                             <Button variant="contained"
-                                                onClick={() => handleOpen(subId)}>
+                                                onClick={() => handleOpen(subId)}
+                                                aria-label={`Toggle details for ${subName}`}
+                                            >
                                                 {openStates[subId] ? <KeyboardArrowUp /> : <KeyboardArrowDown />}Details
                                             </Button>
-                                            <IconButton onClick={() => removeSubAttendance(subId)}>
+                                            <IconButton
+                                                onClick={() => removeSubAttendance(subId)}
+                                                aria-label={`Remove attendance for ${subName}`}
+                                            >
                                                 <DeleteIcon color="error" />
                                             </IconButton>
                                             <Button variant="contained" sx={styles.attendanceButton}
-                                                onClick={() => navigate(`/Admin/subject/student/attendance/${studentID}/${subId}`)}>
+                                                onClick={() => navigate(`/Admin/subject/student/attendance/${studentID}/${subId}`)}
+                                                aria-label={`Change attendance for ${subName}`}
+                                            >
                                                 Change
                                             </Button>
                                         </StyledTableCell>
@@ -188,7 +195,7 @@ const ViewStudent = () => {
                                                     <Typography variant="h6" gutterBottom component="div">
                                                         Attendance Details
                                                     </Typography>
-                                                    <Table size="small" aria-label="purchases">
+                                                    <Table size="small" aria-label="attendance-details">
                                                         <TableHead>
                                                             <StyledTableRow>
                                                                 <StyledTableCell>Date</StyledTableCell>
@@ -216,14 +223,15 @@ const ViewStudent = () => {
                                     </StyledTableRow>
                                 </TableBody>
                             )
-                        }
-                        )}
+                        })}
                     </Table>
                     <div>
                         Overall Attendance Percentage: {overallAttendancePercentage.toFixed(2)}%
                     </div>
-                    <Button variant="contained" color="error" startIcon={<DeleteIcon />} onClick={() => removeHandler(studentID, "RemoveStudentAtten")}>Delete All</Button>
-                    <Button variant="contained" sx={styles.styledButton} onClick={() => navigate("/Admin/students/student/attendance/" + studentID)}>
+                    <Button variant="contained" color="error" startIcon={<DeleteIcon />} onClick={() => removeHandler(studentID, "RemoveStudentAtten")} aria-label="Delete all attendance">
+                        Delete All
+                    </Button>
+                    <Button variant="contained" sx={styles.styledButton} onClick={() => navigate("/Admin/students/student/attendance/" + studentID)} aria-label="Add attendance">
                         Add Attendance
                     </Button>
                 </>
@@ -250,17 +258,19 @@ const ViewStudent = () => {
                                     label="Table"
                                     value="table"
                                     icon={selectedSection === 'table' ? <TableChartIcon /> : <TableChartOutlinedIcon />}
+                                    aria-label="Show attendance table"
                                 />
                                 <BottomNavigationAction
                                     label="Chart"
                                     value="chart"
                                     icon={selectedSection === 'chart' ? <InsertChartIcon /> : <InsertChartOutlinedIcon />}
+                                    aria-label="Show attendance chart"
                                 />
                             </BottomNavigation>
                         </Paper>
                     </>
                     :
-                    <Button variant="contained" sx={styles.styledButton} onClick={() => navigate("/Admin/students/student/attendance/" + studentID)}>
+                    <Button variant="contained" sx={styles.styledButton} onClick={() => navigate("/Admin/students/student/attendance/" + studentID)} aria-label="Add attendance">
                         Add Attendance
                     </Button>
                 }
@@ -294,7 +304,7 @@ const ViewStudent = () => {
                             })}
                         </TableBody>
                     </Table>
-                    <Button variant="contained" sx={styles.styledButton} onClick={() => navigate("/Admin/students/student/marks/" + studentID)}>
+                    <Button variant="contained" sx={styles.styledButton} onClick={() => navigate("/Admin/students/student/marks/" + studentID)} aria-label="Add marks">
                         Add Marks
                     </Button>
                 </>
@@ -321,17 +331,19 @@ const ViewStudent = () => {
                                     label="Table"
                                     value="table"
                                     icon={selectedSection === 'table' ? <TableChartIcon /> : <TableChartOutlinedIcon />}
+                                    aria-label="Show marks table"
                                 />
                                 <BottomNavigationAction
                                     label="Chart"
                                     value="chart"
                                     icon={selectedSection === 'chart' ? <InsertChartIcon /> : <InsertChartOutlinedIcon />}
+                                    aria-label="Show marks chart"
                                 />
                             </BottomNavigation>
                         </Paper>
                     </>
                     :
-                    <Button variant="contained" sx={styles.styledButton} onClick={() => navigate("/Admin/students/student/marks/" + studentID)}>
+                    <Button variant="contained" sx={styles.styledButton} onClick={() => navigate("/Admin/students/student/marks/" + studentID)} aria-label="Add marks">
                         Add Marks
                     </Button>
                 }
@@ -354,7 +366,7 @@ const ViewStudent = () => {
                         <CustomPieChart data={chartData} />
                     )
                 }
-                <Button variant="contained" sx={styles.styledButton} onClick={deleteHandler}>
+                <Button variant="contained" sx={styles.styledButton} onClick={deleteHandler} aria-label="Delete student">
                     Delete
                 </Button>
                 <br />
@@ -409,9 +421,9 @@ const ViewStudent = () => {
                         <TabContext value={value}>
                             <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
                                 <TabList onChange={handleChange} sx={{ position: 'fixed', width: '100%', bgcolor: 'background.paper', zIndex: 1 }}>
-                                    <Tab label="Details" value="1" />
-                                    <Tab label="Attendance" value="2" />
-                                    <Tab label="Marks" value="3" />
+                                    <Tab label="Details" value="1" aria-label="Show student details" />
+                                    <Tab label="Attendance" value="2" aria-label="Show student attendance" />
+                                    <Tab label="Marks" value="3" aria-label="Show student marks" />
                                 </TabList>
                             </Box>
                             <Container sx={{ marginTop: "3rem", marginBottom: "4rem" }}>

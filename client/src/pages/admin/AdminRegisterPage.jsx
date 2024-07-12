@@ -208,7 +208,7 @@ const AdminRegisterPage = () => {
     );
 }
 
-export default AdminRegisterPage
+export default AdminRegisterPage;
 
 const StyledLink = styled(Link)`
   margin-top: 9px;

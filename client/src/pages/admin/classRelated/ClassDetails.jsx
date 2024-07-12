@@ -75,17 +75,18 @@ const ClassDetails = () => {
     const SubjectsButtonHaver = ({ row }) => {
         return (
             <>
-                <IconButton onClick={() => deleteHandler(row.id, "Subject")}>
+                <IconButton aria-label="Delete Subject" onClick={() => deleteHandler(row.id, "Subject")}>
                     <DeleteIcon color="error" />
                 </IconButton>
                 <BlueButton
                     variant="contained"
+                    aria-label={`View Subject ${row.name}`}
                     onClick={() => {
                         navigate(`/Admin/class/subject/${classID}/${row.id}`)
                     }}
                 >
                     View
-                </BlueButton >
+                </BlueButton>
             </>
         );
     };
@@ -93,11 +94,13 @@ const ClassDetails = () => {
     const subjectActions = [
         {
             icon: <PostAddIcon color="primary" />, name: 'Add New Subject',
-            action: () => navigate("/Admin/addsubject/" + classID)
+            action: () => navigate("/Admin/addsubject/" + classID),
+            'aria-label': 'Add New Subject'
         },
         {
             icon: <DeleteIcon color="error" />, name: 'Delete All Subjects',
-            action: () => deleteHandler(classID, "SubjectsClass")
+            action: () => deleteHandler(classID, "SubjectsClass"),
+            'aria-label': 'Delete All Subjects'
         }
     ];
 
@@ -108,6 +111,7 @@ const ClassDetails = () => {
                     <Box sx={{ display: 'flex', justifyContent: 'flex-end', marginTop: '16px' }}>
                         <GreenButton
                             variant="contained"
+                            aria-label="Add Subjects"
                             onClick={() => navigate("/Admin/addsubject/" + classID)}
                         >
                             Add Subjects
@@ -143,17 +147,19 @@ const ClassDetails = () => {
     const StudentsButtonHaver = ({ row }) => {
         return (
             <>
-                <IconButton onClick={() => deleteHandler(row.id, "Student")}>
+                <IconButton aria-label="Remove Student" onClick={() => deleteHandler(row.id, "Student")}>
                     <PersonRemoveIcon color="error" />
                 </IconButton>
                 <BlueButton
                     variant="contained"
+                    aria-label={`View Student ${row.name}`}
                     onClick={() => navigate("/Admin/students/student/" + row.id)}
                 >
                     View
                 </BlueButton>
                 <PurpleButton
                     variant="contained"
+                    aria-label={`View Attendance for ${row.name}`}
                     onClick={() =>
                         navigate("/Admin/students/student/attendance/" + row.id)
                     }
@@ -167,11 +173,13 @@ const ClassDetails = () => {
     const studentActions = [
         {
             icon: <PersonAddAlt1Icon color="primary" />, name: 'Add New Student',
-            action: () => navigate("/Admin/class/addstudents/" + classID)
+            action: () => navigate("/Admin/class/addstudents/" + classID),
+            'aria-label': 'Add New Student'
         },
         {
             icon: <PersonRemoveIcon color="error" />, name: 'Delete All Students',
-            action: () => deleteHandler(classID, "StudentsClass")
+            action: () => deleteHandler(classID, "StudentsClass"),
+            'aria-label': 'Delete All Students'
         },
     ];
 
@@ -183,6 +191,7 @@ const ClassDetails = () => {
                         <Box sx={{ display: 'flex', justifyContent: 'flex-end', marginTop: '16px' }}>
                             <GreenButton
                                 variant="contained"
+                                aria-label="Add Students"
                                 onClick={() => navigate("/Admin/class/addstudents/" + classID)}
                             >
                                 Add Students
@@ -214,40 +223,7 @@ const ClassDetails = () => {
     const ClassDetailsSection = () => {
         const numberOfSubjects = subjectsList.length;
         const numberOfStudents = sclassStudents.length;
-
-        return (
-            <>
-                <Typography variant="h4" align="center" gutterBottom>
-                    Class Details
-                </Typography>
-                <Typography variant="h5" gutterBottom>
-                    This is Class {sclassDetails && sclassDetails.sclassName}
-                </Typography>
-                <Typography variant="h6" gutterBottom>
-                    Number of Subjects: {numberOfSubjects}
-                </Typography>
-                <Typography variant="h6" gutterBottom>
-                    Number of Students: {numberOfStudents}
-                </Typography>
-                {getresponse &&
-                    <GreenButton
-                        variant="contained"
-                        onClick={() => navigate("/Admin/class/addstudents/" + classID)}
-                    >
-                        Add Students
-                    </GreenButton>
-                }
-                {response &&
-                    <GreenButton
-                        variant="contained"
-                        onClick={() => navigate("/Admin/addsubject/" + classID)}
-                    >
-                        Add Subjects
-                    </GreenButton>
-                }
-            </>
-        );
-    }
+ }
 
     return (
         <>

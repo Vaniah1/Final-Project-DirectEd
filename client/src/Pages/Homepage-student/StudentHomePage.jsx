@@ -76,7 +76,6 @@ const StudentHomePage = () => {
                         <p className="text-xl">{currentUser.sclassName.name}</p>
                         <p className="text-lg mt-2">Overall performance</p>
                     </div>
-                    <img src={currentUser.avatar} alt="User Image" className="w-16 h-16 rounded-full" />
                 </div>
             </motion.div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 ">

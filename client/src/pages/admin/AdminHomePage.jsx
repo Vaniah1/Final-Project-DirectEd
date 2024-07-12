@@ -1,13 +1,13 @@
-import { Container, Grid, Paper } from '@mui/material'
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { Container, Grid } from '@mui/material';
 import SeeNotice from '../../components/SeeNotice';
 import Students from "../../assets/img1.png";
 import Classes from "../../assets/img2.png";
 import Teachers from "../../assets/img3.png";
 import Fees from "../../assets/img4.png";
-import styled from 'styled-components';
 import CountUp from 'react-countup';
-import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
+import { motion } from 'framer-motion';
 import { getAllSclasses } from '../../redux/sclassRelated/sclassHandle';
 import { getAllStudents } from '../../redux/studentRelated/studentHandle';
 import { getAllTeachers } from '../../redux/teacherRelated/teacherHandle';
@@ -33,73 +33,63 @@ const AdminHomePage = () => {
     const numberOfTeachers = teachersList && teachersList.length;
 
     return (
-        <>
-            <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
+        <div className="container mx-auto px-4 py-8 bg-gradient-to-r from-blue-50 to-indigo-50">
+            <Container maxWidth="lg">
                 <Grid container spacing={3}>
                     <Grid item xs={12} md={3} lg={3}>
-                        <StyledPaper>
-                            <img src={Students} alt="Students" />
-                            <Title>
-                                Total Students
-                            </Title>
-                            <Data start={0} end={numberOfStudents} duration={2.5} />
-                        </StyledPaper>
+                        <motion.div 
+                            whileHover={{ scale: 1.05 }}
+                            className="bg-white rounded-lg shadow-md p-6 flex flex-col items-center justify-between h-48"
+                        >
+                            <img src={Students} alt="Students" className="w-16 h-16 mb-4" />
+                            <h2 className="text-xl font-semibold mb-2">Total Students</h2>
+                            <CountUp start={0} end={numberOfStudents} duration={2.5} className="text-3xl font-bold text-green-600" />
+                        </motion.div>
                     </Grid>
                     <Grid item xs={12} md={3} lg={3}>
-                        <StyledPaper>
-                            <img src={Classes} alt="Classes" />
-                            <Title>
-                                Total Classes
-                            </Title>
-                            <Data start={0} end={numberOfClasses} duration={5} />
-                        </StyledPaper>
+                        <motion.div 
+                            whileHover={{ scale: 1.05 }}
+                            className="bg-white rounded-lg shadow-md p-6 flex flex-col items-center justify-between h-48"
+                        >
+                            <img src={Classes} alt="Classes" className="w-16 h-16 mb-4" />
+                            <h2 className="text-xl font-semibold mb-2">Total Classes</h2>
+                            <CountUp start={0} end={numberOfClasses} duration={5} className="text-3xl font-bold text-blue-600" />
+                        </motion.div>
                     </Grid>
                     <Grid item xs={12} md={3} lg={3}>
-                        <StyledPaper>
-                            <img src={Teachers} alt="Teachers" />
-                            <Title>
-                                Total Teachers
-                            </Title>
-                            <Data start={0} end={numberOfTeachers} duration={2.5} />
-                        </StyledPaper>
+                        <motion.div 
+                            whileHover={{ scale: 1.05 }}
+                            className="bg-white rounded-lg shadow-md p-6 flex flex-col items-center justify-between h-48"
+                        >
+                            <img src={Teachers} alt="Teachers" className="w-16 h-16 mb-4" />
+                            <h2 className="text-xl font-semibold mb-2">Total Teachers</h2>
+                            <CountUp start={0} end={numberOfTeachers} duration={2.5} className="text-3xl font-bold text-indigo-600" />
+                        </motion.div>
                     </Grid>
                     <Grid item xs={12} md={3} lg={3}>
-                        <StyledPaper>
-                            <img src={Fees} alt="Fees" />
-                            <Title>
-                                Total Fees Paid
-                            </Title>
-                            <Data start={0} end={250000} duration={6} prefix="Ksh " />                        </StyledPaper>
+                        <motion.div 
+                            whileHover={{ scale: 1.05 }}
+                            className="bg-white rounded-lg shadow-md p-6 flex flex-col items-center justify-between h-48"
+                        >
+                            <img src={Fees} alt="Fees" className="w-16 h-16 mb-4" />
+                            <h2 className="text-xl font-semibold mb-2">Total Fees Paid</h2>
+                            <CountUp start={0} end={250000} duration={6} prefix="Ksh " className="text-3xl font-bold text-purple-600" />
+                        </motion.div>
                     </Grid>
                     <Grid item xs={12} md={12} lg={12}>
-                        <Paper sx={{ p: 2, display: 'flex', flexDirection: 'column' }}>
+                        <motion.div 
+                            initial={{ opacity: 0, y: 50 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.5, delay: 0.2 }}
+                            className="bg-white rounded-lg shadow-md p-6"
+                        >
                             <SeeNotice />
-                        </Paper>
+                        </motion.div>
                     </Grid>
                 </Grid>
             </Container>
-        </>
+        </div>
     );
 };
 
-
-const StyledPaper = styled(Paper)`
-  padding: 16px;
-  display: flex;
-  flex-direction: column;
-  height: 200px;
-  justify-content: space-between;
-  align-items: center;
-  text-align: center;
-`;
-
-const Title = styled.p`
-  font-size: 1.25rem;
-`;
-
-const Data = styled(CountUp)`
-  font-size: calc(1.3rem + .6vw);
-  color: green;
-`;
-
-export default AdminHomePage
+export default AdminHomePage;

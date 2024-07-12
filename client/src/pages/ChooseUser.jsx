@@ -9,7 +9,7 @@ import {
   Backdrop,
 } from '@mui/material';
 import { AccountCircle, School, Group } from '@mui/icons-material';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import { useDispatch, useSelector } from 'react-redux';
 import { loginUser } from '../redux/userRelated/userHandle';
 import Popup from '../components/Popup';
@@ -85,10 +85,10 @@ const ChooseUser = ({ visitor }) => {
   return (
     <StyledContainer>
       <Container>
-        <Grid container spacing={2} justifyContent="center">
+        <Grid container spacing={4} justifyContent="center">
           <Grid item xs={12} sm={6} md={4}>
-            <div onClick={() => navigateHandler("Admin")}>
-              <StyledPaper elevation={3}>
+            <StyledCard onClick={() => navigateHandler("Admin")}>
+              <CardContent>
                 <Box mb={2}>
                   <AccountCircle fontSize="large" />
                 </Box>
@@ -96,12 +96,12 @@ const ChooseUser = ({ visitor }) => {
                   Admin
                 </StyledTypography>
                 Login as an administrator to access the dashboard to manage app data.
-              </StyledPaper>
-            </div>
+              </CardContent>
+            </StyledCard>
           </Grid>
           <Grid item xs={12} sm={6} md={4}>
-            <StyledPaper elevation={3}>
-              <div onClick={() => navigateHandler("Student")}>
+            <StyledCard onClick={() => navigateHandler("Student")}>
+              <CardContent>
                 <Box mb={2}>
                   <School fontSize="large" />
                 </Box>
@@ -109,12 +109,12 @@ const ChooseUser = ({ visitor }) => {
                   Student
                 </StyledTypography>
                 Login as a student to explore course materials and assignments.
-              </div>
-            </StyledPaper>
+              </CardContent>
+            </StyledCard>
           </Grid>
           <Grid item xs={12} sm={6} md={4}>
-            <StyledPaper elevation={3}>
-              <div onClick={() => navigateHandler("Teacher")}>
+            <StyledCard onClick={() => navigateHandler("Teacher")}>
+              <CardContent>
                 <Box mb={2}>
                   <Group fontSize="large" />
                 </Box>
@@ -122,8 +122,8 @@ const ChooseUser = ({ visitor }) => {
                   Teacher
                 </StyledTypography>
                 Login as a teacher to create courses, assignments, and track student progress.
-              </div>
-            </StyledPaper>
+              </CardContent>
+            </StyledCard>
           </Grid>
         </Grid>
       </Container>
@@ -141,28 +141,89 @@ const ChooseUser = ({ visitor }) => {
 
 export default ChooseUser;
 
+const floatingAnimation = keyframes`
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+  100% { transform: translateY(0px); }
+`;
+
+const glowAnimation = keyframes`
+  0% { box-shadow: 0 0 5px #4CAF50; }
+  50% { box-shadow: 0 0 20px #4CAF50; }
+  100% { box-shadow: 0 0 5px #4CAF50; }
+`;
+
 const StyledContainer = styled.div`
-  background: linear-gradient(to bottom, #2135EF, #0C1FC8);
+  background: linear-gradient(to right, #4CAF50, #2196F3);
   height: 110vh;
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 2rem;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.1) 10%, transparent 10%),
+                radial-gradient(circle, rgba(255,255,255,0.1) 10%, transparent 10%);
+    background-size: 50px 50px;
+    background-position: 0 0, 25px 25px;
+    animation: moveBackground 20s linear infinite;
+  }
+
+  @keyframes moveBackground {
+    0% { transform: translate(0, 0); }
+    100% { transform: translate(-50px, -50px); }
+  }
 `;
 
-const StyledPaper = styled(Paper)`
+const StyledCard = styled(Paper)`
   padding: 20px;
   text-align: center;
-  background-color: #1f1f38;
-  color:rgba(255, 255, 255, 0.6);
-  cursor:pointer;
+  background-color: rgba(255, 255, 255, 0.8);
+  color: #4CAF50;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  animation: ${floatingAnimation} 3s ease-in-out infinite;
+  border-radius: 20px;
+  border: 2px solid #4CAF50;
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: -15px;
+    right: -15px;
+    width: 30px;
+    height: 30px;
+    background-color: #4CAF50;
+    border-radius: 50%;
+  }
 
   &:hover {
-    background-color: #2135EF;
-    color:white;
+    background-color: rgba(76, 175, 80, 0.8);
+    color: white;
+    transform: scale(1.05);
+    animation: ${glowAnimation} 1.5s ease-in-out infinite;
   }
+`;
+
+const CardContent = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
 `;
 
 const StyledTypography = styled.h2`
   margin-bottom: 10px;
+  font-size: 1.5rem;
+  font-weight: bold;
 `;

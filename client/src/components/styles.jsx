@@ -9,7 +9,7 @@ import {
 
 const drawerWidth = 240
 
-export const StyledTableCell = styled(TableCell)(({ theme }) => ({
+ const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
         backgroundColor: "#28A745",
         color: theme.palette.common.white,
@@ -19,7 +19,7 @@ export const StyledTableCell = styled(TableCell)(({ theme }) => ({
     },
 }));
 
-export const StyledTableRow = styled(TableRow)(({ theme }) => ({
+ const StyledTableRow = styled(TableRow)(({ theme }) => ({
     '&:nth-of-type(odd)': {
         backgroundColor: theme.palette.action.hover,
     },
@@ -29,7 +29,7 @@ export const StyledTableRow = styled(TableRow)(({ theme }) => ({
     },
 }));
 
-export const AppBar = styled(MuiAppBar, {
+ const AppBar = styled(MuiAppBar, {
     shouldForwardProp: (prop) => prop !== 'open',
 })(({ theme, open }) => ({
     zIndex: theme.zIndex.drawer + 1,
@@ -48,7 +48,7 @@ export const AppBar = styled(MuiAppBar, {
     }),
 }));
 
-export const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' })(
+ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' })(
     ({ theme, open }) => ({
         '& .MuiDrawer-paper': {
             position: 'relative',
@@ -73,3 +73,5 @@ export const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 
         },
     }),
 );
+
+export default { AppBar, Drawer, StyledTableCell, StyledTableRow }

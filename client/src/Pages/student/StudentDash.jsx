@@ -46,7 +46,7 @@ const styles = {
     },
 };
 
-const StudentDash = () => {
+export default function StudentDash() {
     const [open, setOpen] = useState(true);
     const toggleDrawer = () => {
         setOpen(!open);
@@ -111,5 +111,3 @@ const StudentDash = () => {
         </>
     );
 }
-
-export default StudentDash;

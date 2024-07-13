@@ -1,8 +1,8 @@
 
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
-import { visualizer } from 'rollup-plugin-visualizer'
 import path from 'path'
+import compress from 'vite-plugin-compress';
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -18,7 +18,12 @@ export default defineConfig({
   //     },
   //   },
   },
-  plugins: [react(), visualizer({ open: true })],
+  plugins: [react(), compress({
+    verbose: true,
+    disable: false,
+    threshold: 10240,
+    filter: '/\.(js|css|json|jsx)$/', // Adjust this filter based on your file types
+  }),],
 //   resolve: {
 //     alias: {
 //       '@mui/styled-engine': '@mui/styled-engine-sc',

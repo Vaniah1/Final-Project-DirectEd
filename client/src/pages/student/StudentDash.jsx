@@ -13,16 +13,16 @@ import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import { Navigate, Route, Routes } from 'react-router-dom';
 
 // Components
-import AccountMenu from '../components/AccountMenu';
-import { AppBar, Drawer } from '../components/styles';
-import StudentSideBar from './student/StudentSideBar';
-import StudentHomePage from './student/StudentHomePage';
-import StudentProfile from './student/StudentProfile';
-import StudentSubjects from './student/StudentSubjects';
-import ViewStdAttendance from './student/ViewStdAttendance';
-import StudentComplain from './student/StudentComplain';
-import Logout from './Logout';
-import IncomingLessonAlert from './student/VideoCall';
+import AccountMenu from '../../components/AccountMenu';
+import { AppBar, Drawer } from '../../components/styles';
+import StudentSideBar from './StudentSideBar';
+import StudentHomePage from './StudentHomePage';
+import StudentProfile from './StudentProfile';
+import StudentSubjects from './StudentSubjects';
+import ViewStdAttendance from './ViewStdAttendance';
+import StudentComplain from './StudentComplain';
+import Logout from '../Logout';
+import IncomingLessonAlert from './VideoCall';
 
 const styles = {
     boxStyled: {

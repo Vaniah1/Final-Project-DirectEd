@@ -26,27 +26,27 @@ mongoose
 app.use('/', Routes);
 
 
-app.post('/verify-face', async (req, res) => {
-    const { encoding } = req.body;
+// app.post('/verify-face', async (req, res) => {
+//     const { encoding } = req.body;
 
-    const users = await Admin.find({});
-    const distanceThreshold = 0.6; // Adjust based on your needs
+//     const users = await Admin.find({});
+//     const distanceThreshold = 0.6; // Adjust based on your needs
 
-    for (const user of users) {
-        const storedEncoding = new Float32Array(user.encoding);
-        const distance = faceapi.euclideanDistance(encoding, storedEncoding);
+//     for (const user of users) {
+//         const storedEncoding = new Float32Array(user.encoding);
+//         const distance = faceapi.euclideanDistance(encoding, storedEncoding);
 
-        if (distance < distanceThreshold) {
-            return res.status(200).json({ message: 'Access Granted', faceId: user.faceId });
-        }
-    }
+//         if (distance < distanceThreshold) {
+//             return res.status(200).json({ message: 'Access Granted', faceId: user.faceId });
+//         }
+//     }
 
-    res.status(401).json({ message: 'Access Denied' });
-});
+//     res.status(401).json({ message: 'Access Denied' });
+// });
 const path = require('path')
 
 // Serve static files from the React app
-app.use(express.static(path.join(__dirname, '/client/dist')))
+app.use(express.static(path.join(__dirname, 'client' ,'dist')))
 
 // The "catchall" handler: for any request that doesn't
 // // match one above, send back React's index.html file.

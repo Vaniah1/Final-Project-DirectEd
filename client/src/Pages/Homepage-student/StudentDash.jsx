@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import {
     CssBaseline,
     Box,
@@ -10,17 +10,41 @@ import {
 } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
-import StudentSideBar from './StudentSideBar';
 import { Navigate, Route, Routes } from 'react-router-dom';
+import AccountMenu from '../../components/AccountMenu';
+import { AppBar, Drawer } from '../../components/styles';
+import StudentSideBar from './StudentSideBar';
 import StudentHomePage from './StudentHomePage';
 import StudentProfile from './StudentProfile';
 import StudentSubjects from './StudentSubjects';
 import ViewStdAttendance from './ViewStdAttendance';
 import StudentComplain from './StudentComplain';
-import Logout from '../Logout'
-import AccountMenu from '../../components/AccountMenu';
-import { AppBar, Drawer } from '../../components/styles';
+import Logout from '../Logout';
 import IncomingLessonAlert from './VideoCall';
+
+const styles = {
+    boxStyled: {
+        backgroundColor: "#",
+        flexGrow: 1,
+        height: '100vh',
+        overflow: 'auto',
+    },
+    toolBarStyled: {
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'flex-end',
+        px: [1],
+    },
+    drawerStyled: {
+        display: "flex"
+    },
+    hideDrawer: {
+        display: 'flex',
+        '@media (max-width: 600px)': {
+            display: 'none',
+        },
+    },
+};
 
 const StudentDash = () => {
     const [open, setOpen] = useState(true);
@@ -53,7 +77,7 @@ const StudentDash = () => {
                             noWrap
                             sx={{ flexGrow: 1 }}
                         >
-                            Student Dashboard
+                            AcademiHub
                         </Typography>
                         <AccountMenu />
                     </Toolbar>
@@ -80,7 +104,6 @@ const StudentDash = () => {
                         <Route path="/Student/subjects" element={<StudentSubjects />} />
                         <Route path="/Student/attendance" element={<ViewStdAttendance />} />
                         <Route path="/Student/complain" element={<StudentComplain />} />
-
                         <Route path="/logout" element={<Logout />} />
                     </Routes>
                 </Box>
@@ -89,34 +112,4 @@ const StudentDash = () => {
     );
 }
 
-
-
-const styles = {
-    boxStyled: {
-        backgroundColor: (theme) =>
-            theme.palette.mode === 'light'
-                ? theme.palette.grey[100]
-                : theme.palette.grey[900],
-        flexGrow: 1,
-        height: '100vh',
-        overflow: 'auto',
-    },
-    toolBarStyled: {
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'flex-end',
-        px: [1],
-    },
-    drawerStyled: {
-        display: "flex"
-    },
-    hideDrawer: {
-        display: 'flex',
-        '@media (max-width: 600px)': {
-            display: 'none',
-        },
-    },
-}
-
-
-export default StudentDash
+export default StudentDash;

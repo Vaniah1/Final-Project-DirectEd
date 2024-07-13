@@ -41,11 +41,10 @@ const ChatbotComponent = () => {
             src="https://echuo-ai.onrender.com/"
             width="100%"
             height="100%"
-            frameBorder="0"
             allow="microphone *"
             referrerPolicy="no-referrer"
             title="Chat interface"
-            aria-label="Chat interface"
+            aria-label="AcademiHub Copilot"
           ></ChatFrame>
         </ChatWindow>
       )}
@@ -67,8 +66,8 @@ const ChatToggleButton = styled.button`
   bottom: 0;
   right: 0;
   z-index:9999;
-  width: 80px;
-  height: 80px;
+  width: 60px;
+  height: 60px;
   border-radius: 50%;
   background-color: #008000;
   color: white;
@@ -106,8 +105,8 @@ const ChatWindow = styled.div`
     position: absolute;
     bottom: 80px;
     right: 0;
-    width: 300px;
-    height: 450px;
+    width: 400px;
+    height: 550px;
     border-radius: 12px;
   }
 `;

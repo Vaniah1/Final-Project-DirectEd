@@ -41,20 +41,20 @@ export const DarkRedButton = styled(Button)`
 
 export const BlueButton = styled(Button)`
   && {
-    background-color: #080a43;
+    background-color:#28A745;
     color: #fff;
     &:hover {
-      background-color: #0a1e82;
+      background-color: #08E43A;
     }
   }
 `;
 
 export const PurpleButton = styled(Button)`
   && {
-    background-color: #270843;
+    background-color: #28A745;
     color: #fff;
     &:hover {
-      background-color: #270843;
+      background-color: #08E43A;
     }
   }
 `;
@@ -71,7 +71,7 @@ export const LightPurpleButton = styled(Button)`
 
 export const GreenButton = styled(Button)`
   && {
-    background-color: #133104;
+    background-color: #28A745;
     color: #fff;
     &:hover {
       background-color: #266810;

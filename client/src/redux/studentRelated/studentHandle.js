@@ -6,7 +6,7 @@ import {
     getError,
     stuffDone
 } from './studentSlice';
-const REACT_APP_BASE_URL = "https://final-project-directed-oj97.onrender.com/"
+const REACT_APP_BASE_URL = "https://final-project-directed-oj97.onrender.com"
 
 export const getAllStudents = (id) => async (dispatch) => {
     dispatch(getRequest());

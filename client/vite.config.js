@@ -16,10 +16,19 @@ export default defineConfig({
       },
     },
   },
-  plugins: [react(),visualizer({ open: true }),],
+  plugins: [react(), visualizer({ open: true })],
   resolve: {
     alias: {
-      '@mui/styled-engine': '@mui/styled-engine-sc'
+      '@mui/styled-engine': '@mui/styled-engine-sc',
+      '@': '/src',
+      'pages': '/src/pages',
+      'components': '/src/components',
     },
+  },
+  optimizeDeps: {
+    include: ['@mui/material', '@mui/icons-material'],
+  },
+  esbuild: {
+    logOverride: { 'this-is-undefined-in-esm': 'silent' }
   },
 })

@@ -1,14 +1,14 @@
 import React from 'react'
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import { useSelector } from 'react-redux';
-import Homepage from './pages/Homepage.jsx';
-import AdminDashboard from './pages/admin/AdminDashboard.jsx';
-import TeacherDashboard from './pages/teacher/TeacherDashboard.jsx';
-import LoginPage from './pages/LoginPage.jsx';
-import AdminRegisterPage from './pages/admin/AdminRegisterPage.jsx';
-import ChooseUser from './pages/ChooseUser.jsx';
-import StudentDash from './pages/Homepage-student/StudentDash';
-import ChatbotComponent from './components/ChatBot.jsx';
+import Homepage from '@/pages/Homepage.jsx';
+import AdminDashboard from '@/pages/admin/AdminDashboard.jsx';
+import TeacherDashboard from '@/pages/teacher/TeacherDashboard.jsx';
+import LoginPage from '@/pages/LoginPage.jsx';
+import AdminRegisterPage from '@/pages/admin/AdminRegisterPage.jsx';
+import ChooseUser from '@/pages/ChooseUser.jsx';
+import StudentDash from '@/pages/Homepage-student/StudentDash.jsx';
+import ChatbotComponent from '@/components/ChatBot.jsx';
 const App = () => {
   const { currentRole } = useSelector(state => state.user);
 

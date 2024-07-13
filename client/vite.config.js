@@ -2,8 +2,6 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import path from 'path'
-import compress from 'vite-plugin-compress';
-
 // https://vitejs.dev/config/
 export default defineConfig({
   build: {
@@ -18,12 +16,7 @@ export default defineConfig({
   //     },
   //   },
   },
-  plugins: [react(), compress({
-    verbose: true,
-    disable: false,
-    threshold: 10240,
-    filter: '/\.(js|css|json|jsx)$/', // Adjust this filter based on your file types
-  }),],
+  plugins: [react()],
 //   resolve: {
 //     alias: {
 //       '@mui/styled-engine': '@mui/styled-engine-sc',

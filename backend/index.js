@@ -6,6 +6,7 @@ const axios=require("axios")
 const faceapi = require('face-api.js');
 const canvas = require('canvas');
 const Admin = require("./models/adminSchema.js")
+const compression = require('compression');
 // const bodyParser = require("body-parser")
 const app = express()
 
@@ -17,6 +18,7 @@ dotenv.config();
 
 app.use(express.json())
 app.use(cors())
+app.use(compression())
 
 mongoose
     .connect(process.env.MONGO_URL)
@@ -46,7 +48,7 @@ app.use('/', Routes);
 const path = require('path')
 
 // Serve static files from the React app
-app.use(express.static(path.join(__dirname, 'client' ,'dist')))
+app.use(express.static(path.join(__dirname, '/client/dist')))
 
 // The "catchall" handler: for any request that doesn't
 // // match one above, send back React's index.html file.

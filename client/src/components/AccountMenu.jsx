@@ -74,8 +74,6 @@ const AccountMenu = () => {
     );
 }
 
-export default AccountMenu
-
 const styles = {
     styledPaper: {
         overflow: 'visible',
@@ -101,3 +99,5 @@ const styles = {
         },
     }
 }
+
+export default AccountMenu

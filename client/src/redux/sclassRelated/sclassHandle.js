@@ -11,7 +11,7 @@ import {
     getSubDetailsSuccess,
     getSubDetailsRequest
 } from './sclassSlice';
-const REACT_APP_BASE_URL = "http://localhost:5001"
+const REACT_APP_BASE_URL = "http://localhost:5001" || "https://final-project-directed-oj97.onrender.com/"
 
 export const getAllSclasses = (id, address) => async (dispatch) => {
     dispatch(getRequest());

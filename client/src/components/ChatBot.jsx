@@ -38,7 +38,7 @@ const ChatbotComponent = () => {
             </CloseButton>
           </ChatHeader>
           <ChatFrame
-            src="https://echuo-ai.onrender.com/"
+            src="https://echuo-ai.streamlit.app/"
             width="100%"
             height="100%"
             allow="microphone *"

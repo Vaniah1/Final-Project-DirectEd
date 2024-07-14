@@ -3,7 +3,7 @@ const cors = require("cors")
 const mongoose = require("mongoose")
 const dotenv = require("dotenv")
 const axios=require("axios")
-const faceapi = require('face-api.js');
+//const faceapi = require('face-api.js');
 const canvas = require('canvas');
 const Admin = require("./models/adminSchema.js")
 const compression = require('compression');
@@ -28,23 +28,23 @@ mongoose
 app.use('/', Routes);
 
 
-// app.post('/verify-face', async (req, res) => {
-//     const { encoding } = req.body;
+//  app.post('/verify-face', async (req, res) => {
+//      const { encoding } = req.body;
 
-//     const users = await Admin.find({});
-//     const distanceThreshold = 0.6; // Adjust based on your needs
+//      const users = await Admin.find({});
+//      const distanceThreshold = 0.6; // Adjust based on your needs
 
-//     for (const user of users) {
-//         const storedEncoding = new Float32Array(user.encoding);
-//         const distance = faceapi.euclideanDistance(encoding, storedEncoding);
+//      for (const user of users) {
+//          const storedEncoding = new Float32Array(user.encoding);
+//          const distance = faceapi.euclideanDistance(encoding, storedEncoding);
 
-//         if (distance < distanceThreshold) {
-//             return res.status(200).json({ message: 'Access Granted', faceId: user.faceId });
-//         }
-//     }
+//          if (distance < distanceThreshold) {
+//              return res.status(200).json({ message: 'Access Granted', faceId: user.faceId });
+//          }
+//      }
 
-//     res.status(401).json({ message: 'Access Denied' });
-// });
+//      res.status(401).json({ message: 'Access Denied' });
+//  });
 const path = require('path')
 
 

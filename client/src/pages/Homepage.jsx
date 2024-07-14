@@ -1,128 +1,151 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Container, Grid, Box, Button } from '@mui/material';
+import { Container, Grid, Box, Button, Paper } from '@mui/material';
 import styled from 'styled-components';
-import Students from "../assets/students.svg";
-import { LightPurpleButton } from '../components/buttonStyles';
-import TypingEffect from '../components/TypeEffect';
 import MenuBookIcon from '@mui/icons-material/MenuBook';
-import GoogleIcon from '@mui/icons-material/Google';
-import { blue } from '@mui/material/colors';
-import stude from "../assets/bts4.svg"
-
-
+import Carousel from 'react-material-ui-carousel';
+import TypingEffect from '../components/TypeEffect';
+import Students from "../assets/School-Girl-With-Rabbit.svg";
+import stude from "../assets/bts4.svg";
+import bus from "../assets/cyberscooty-two-kids.svg"
+import kids from "../assets/kids.svg"
+import cool from "../assets/1699413865Home School.svg"
 
 
 const Homepage = React.memo(() => {
   return (
-      <div className=" bg-cover bg-center h-full bg-no-repeat z-50  ">
-          <nav className='p-2 bg-blue1 sticky aria w-full h-[80px] text-3xl  pb-2 pb-auto flex mb-20'>                
-              <MenuBookIcon sx={{ color: 'white', fontSize: '4rem',marginLeft:"3px", marginRight: '8px', alignItems: 'center', display: 'inline-flex', verticalAlign: 'middle' }} />
-              <h1 className='[color:white] items-center pt-4 font-bold'>AcademiHub</h1>
-          </nav>
+    <div className="bg-cover bg-center h-full bg-no-repeat z-50">
+      <StyledNav>
+        <MenuBookIcon sx={{ color: 'white', fontSize: '4rem', marginLeft: "3px", marginRight: '8px', verticalAlign: 'middle' }} />
+        <h1 className='font-bold text-white text-3xl'>AcademiHub</h1>
+      </StyledNav>
 
-          <StyledContainer>  
-              <StyledContainer>
+      <StyledContainer>
+        <Grid container spacing={0} alignItems="center" justifyContent="center">
+          <Grid item xs={12} md={6}>s
+            <Carousel>
+              <img src={stude} alt="student" style={{ width: '100%', height: '50%' }} loading="lazy" />
+              <img src={Students} alt="students" style={{ width: '100%', height: '50%' }} loading="lazy" />
+              <img src={bus} alt="School Bus" style={{ width: '100%', height: '50%' }} loading="lazy" />
+              <img src={kids} alt="kids" style={{ width: '100%', height: '50%' }} loading="lazy" />
+              <img src={cool} alt="Cool kid" style={{ width: '100%', height: '50%' }} loading="lazy" />
+            </Carousel>
+          </Grid>
 
-                  <Grid container spacing={0}>
-
-                      <Grid item xs={12} md={6}>
-                          <img src={stude} alt="students" style={{ width: '100%' }} loading="lazy" />
-                      </Grid>
-
-                      <Grid item xs={10} md={6} >
-                          <StyledPaper elevation={3}>
-
-                              <StyledTitle>
-                                <h1><span className='text-4xl mb-2'>Welcome To AcademiHub</span></h1>  
-                              </StyledTitle>
-
-                              <TypingEffect/>
-
-                              <StyledBox>
-
-                                  <StyledLink to="/choose" aria-label="Login">
-                                      <Button sx={{color: "#000000",fontWeight:"bold", marginBottom: "1rem", backgroundColor: "#008000", borderRadius: "15px", padding: "7px",}}  variant="outlined" fullWidth>
-                                          Login
-                                      </Button>
-                                  </StyledLink>
-
-                                  <StyledLink to="/Adminregister" aria-label="Register new school">
-                                      <Button variant="outlined" fullWidth
-                                          sx={{ mt: 1, color: "#000000", borderColor: "#000000",borderRadius: "15px", padding: "5", backgroundColor: "white" }} className='text-white p-5 rounded mt-1 text-blue1'>
-                                        
-                                          Register New School
-                                      </Button>
-                                  </StyledLink>
-
-                                  <StyledText>
-                                      Don't have an account?{' '}
-                                      <Link to="/Adminregister" className='text-blue1' aria-label="Sign up">
-                                          Sign up
-                                      </Link>
-                                  </StyledText>
-
-                              </StyledBox>
-
-                          </StyledPaper>
-                            
-                      </Grid>
-
-                  </Grid>
-                
-              </StyledContainer>
-
-          </StyledContainer>
-      </div>
-        
+          <Grid item xs={10} md={6}>
+            <StyledPaper elevation={3}>
+              <StyledTitle>
+                <h1>Welcome To AcademiHub</h1>
+              </StyledTitle>
+              <TypingEffect />
+              <StyledBox>
+                <StyledLink to="/choose" aria-label="Login">
+                  <StyledButton variant="contained">
+                    Login
+                  </StyledButton>
+                </StyledLink>
+                <StyledLink to="/Adminregister" aria-label="Register new school">
+                  <StyledButton variant="outlined">
+                    Register New School
+                  </StyledButton>
+                </StyledLink>
+                <StyledText>
+                  Don't have an account?{' '}
+                  <Link to="/Adminregister" className='text-blue1' aria-label="Sign up">
+                    Sign up
+                  </Link>
+                </StyledText>
+              </StyledBox>
+            </StyledPaper>
+          </Grid>
+        </Grid>
+      </StyledContainer>
+    </div>
   );
 });
 
 export default Homepage;
 
-const StyledContainer = styled(Container)`
-display: flex;
-justify-content: center;
-align-items: center;
-height: 100vh;
+const StyledNav = styled.nav`
+  display: flex;
+  color:white;
+  align-items: center;
+  justify-content: flex-start;
+  background-color: #28A745;
+  height: 80px;
+  padding: 0 20px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
 `;
 
-const StyledPaper = styled.div`
-padding: 18px;
-height: 100vh;
-display: flex;
-flex-direction: column;
-justify-content: center;
+const StyledContainer = styled(Container)`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+`;
+
+const StyledPaper = styled(Paper)`
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background-color: #ffffff;
+  border-radius: 15px;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
 `;
 
 const StyledBox = styled(Box)`
-display: flex;
-flex-direction: column;
-align-items: center;
-justify-content:center;
-gap: 10px;
-padding: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  padding: 24px;
 `;
 
-const StyledTitle = styled.h1`
-font-size: 3rem;
-color: #252525;
-font-weight: bold;
-padding-top: 50px;
-letter-spacing: normal;
-line-height: normal;
-text-align: center;
+const StyledTitle = styled.div`
+  font-size: 2.5rem;
+  color: #28A745;
+  font-weight: bold;
+  margin-bottom: 20px;
 `;
 
 const StyledText = styled.p`
-margin-top: 50px;
-margin-bottom: 30px; 
-letter-spacing: normal;
-line-height: normal;
-text-align: center;
+  margin-top: 20px;
+  letter-spacing: normal;
+  line-height: normal;
+  text-align: center;
+  font-size: 1rem;
+  color: #28A745;
 `;
 
 const StyledLink = styled(Link)`
-text-decoration: none;
-width: 100%;
+  text-decoration: none;
+  width: 100%;
 `;
+const StyledButton = styled(Button)`
+  color: #ffffff;
+  background-color: #28A745;
+  font-weight: bold;
+  border-color: #28A745;
+  border-radius: 15px;
+  padding: 10px 20px;
+  &:hover {
+    background-color: #218838;
+  }
+`;
+
+
+const carouselItemStyles = {
+  height: '400px',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  color: '#fff',
+  backgroundColor: '#28A745',
+  fontSize: '1.5rem',
+  borderRadius: '10px',
+  overflow: 'hidden'
+};

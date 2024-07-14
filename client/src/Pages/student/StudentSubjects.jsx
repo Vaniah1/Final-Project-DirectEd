@@ -1,18 +1,17 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getSubjectList } from '../../redux/sclassRelated/sclassHandle';
-import { BottomNavigation, BottomNavigationAction, Container, Paper, Table, TableBody, TableHead, Typography } from '@mui/material';
 import { getUserDetails } from '../../redux/userRelated/userHandle';
-import CustomBarChart from '../../components/CustomBarChart'
-
+import CustomBarChart from '../../components/CustomBarChart';
+import { BottomNavigation, BottomNavigationAction, Container, Paper, Table, TableBody, TableHead, Typography, Grid, Box } from '@mui/material';
 import InsertChartIcon from '@mui/icons-material/InsertChart';
 import InsertChartOutlinedIcon from '@mui/icons-material/InsertChartOutlined';
 import TableChartIcon from '@mui/icons-material/TableChart';
 import TableChartOutlinedIcon from '@mui/icons-material/TableChartOutlined';
 import { StyledTableCell, StyledTableRow } from '../../components/styles';
+import styled from 'styled-components';
 
 const StudentSubjects = () => {
-
     const dispatch = useDispatch();
     const { subjectsList, sclassDetails } = useSelector((state) => state.sclass);
     const { userDetails, currentUser, loading, response, error } = useSelector((state) => state.user);
@@ -45,7 +44,7 @@ const StudentSubjects = () => {
 
     const renderTableSection = () => {
         return (
-            <>
+            <StyledPaper elevation={3}>
                 <Typography variant="h4" align="center" gutterBottom>
                     Subject Marks
                 </Typography>
@@ -70,40 +69,54 @@ const StudentSubjects = () => {
                         })}
                     </TableBody>
                 </Table>
-            </>
+            </StyledPaper>
         );
     };
 
     const renderChartSection = () => {
-        return <CustomBarChart chartData={subjectMarks} dataKey="marksObtained" />;
+        return (
+            <StyledPaper elevation={3}>
+                <CustomBarChart chartData={subjectMarks} dataKey="marksObtained" />
+            </StyledPaper>
+        );
     };
 
     const renderClassDetailsSection = () => {
         return (
             <Container>
-                <Typography variant="h4" align="center" gutterBottom>
-                    Class Details
-                </Typography>
-                <Typography variant="h5" gutterBottom>
-                    You are currently in Class {sclassDetails && sclassDetails.sclassName}
-                </Typography>
-                <Typography variant="h6" gutterBottom>
-                    And these are the subjects:
-                </Typography>
-                {subjectsList &&
-                    subjectsList.map((subject, index) => (
-                        <div key={index}>
-                            <Typography variant="subtitle1">
-                                {subject.subName} ({subject.subCode})
+                <StyledPaper elevation={3}>
+                    <Grid container spacing={2}>
+                        <Grid item xs={12}>
+                            <Typography variant="h4" align="center" gutterBottom>
+                                Class Details
                             </Typography>
-                        </div>
-                    ))}
+                        </Grid>
+                        <Grid item xs={12}>
+                            <Typography variant="h5" gutterBottom>
+                                You are currently in Class {sclassDetails && sclassDetails.sclassName}
+                            </Typography>
+                        </Grid>
+                        <Grid item xs={12}>
+                            <Typography variant="h6" gutterBottom>
+                                And these are the subjects:
+                            </Typography>
+                            {subjectsList &&
+                                subjectsList.map((subject, index) => (
+                                    <Box key={index}>
+                                        <Typography variant="subtitle1">
+                                            {subject.subName} ({subject.subCode})
+                                        </Typography>
+                                    </Box>
+                                ))}
+                        </Grid>
+                    </Grid>
+                </StyledPaper>
             </Container>
         );
     };
 
     return (
-        <>
+        <Container maxWidth="md">
             {loading ? (
                 <div>Loading...</div>
             ) : (
@@ -136,8 +149,13 @@ const StudentSubjects = () => {
                     }
                 </div>
             )}
-        </>
+        </Container>
     );
 };
 
 export default StudentSubjects;
+
+const StyledPaper = styled(Paper)`
+  padding: 20px;
+  margin-bottom: 20px;
+`;

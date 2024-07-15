@@ -5,7 +5,7 @@ import {
     getFailed,
     getError
 } from './complainSlice';
-const REACT_APP_BASE_URL = "http://localhost:5001"
+const REACT_APP_BASE_URL =  "https://final-project-directed-oj97..com"
 
 export const getAllComplains = (id, address) => async (dispatch) => {
     dispatch(getRequest());

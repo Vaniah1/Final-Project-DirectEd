@@ -1,95 +1,136 @@
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { Container, Grid } from '@mui/material';
-import SeeNotice from '../../components/SeeNotice';
-import Students from "../../assets/img1.png";
-import Classes from "../../assets/img2.png";
-import Teachers from "../../assets/img3.png";
-import Fees from "../../assets/img4.png";
-import CountUp from 'react-countup';
-import { motion } from 'framer-motion';
-import { getAllSclasses } from '../../redux/sclassRelated/sclassHandle';
-import { getAllStudents } from '../../redux/studentRelated/studentHandle';
-import { getAllTeachers } from '../../redux/teacherRelated/teacherHandle';
+  import React from 'react'
+  import { useSelector } from 'react-redux'
+  import { Container, Grid, Paper, Typography } from '@mui/material'
+  import { motion } from 'framer-motion'
+  import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, BarChart, Bar, PieChart, Pie, Cell } from 'recharts'
+  import SeeNotice from '../../components/SeeNotice'
 
-const AdminHomePage = () => {
-    const dispatch = useDispatch();
-    const { studentsList } = useSelector((state) => state.student);
-    const { sclassesList } = useSelector((state) => state.sclass);
-    const { teachersList } = useSelector((state) => state.teacher);
+  const AdminHomePage = () => {
+      const { currentUser } = useSelector((state) => state.user)
 
-    const { currentUser } = useSelector(state => state.user);
+      // Sample data for charts
+      const studentData = [
+          { month: 'Jan', count: 400 },
+          { month: 'Feb', count: 450 },
+          { month: 'Mar', count: 500 },
+          { month: 'Apr', count: 480 },
+          { month: 'May', count: 520 },
+          { month: 'Jun', count: 550 },
+      ]
 
-    const adminID = currentUser._id;
+      const classData = [
+          { subject: 'Math', count: 30 },
+          { subject: 'Science', count: 25 },
+          { subject: 'English', count: 35 },
+          { subject: 'History', count: 20 },
+      ]
 
-    useEffect(() => {
-        dispatch(getAllStudents(adminID));
-        dispatch(getAllSclasses(adminID, "Sclass"));
-        dispatch(getAllTeachers(adminID));
-    }, [adminID, dispatch]);
+      const teacherData = [
+          { department: 'Science', count: 15 },
+          { department: 'Arts', count: 20 },
+          { department: 'Commerce', count: 10 },
+      ]
 
-    const numberOfStudents = studentsList && studentsList.length;
-    const numberOfClasses = sclassesList && sclassesList.length;
-    const numberOfTeachers = teachersList && teachersList.length;
+      const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042']
 
-    return (
-        <div className="container mx-auto px-4 py-8 bg-gradient-to-r from-blue-50 to-indigo-50">
-            <Container maxWidth="lg">
-                <Grid container spacing={3}>
-                    <Grid item xs={12} md={3} lg={3}>
-                        <motion.div 
-                            whileHover={{ scale: 1.05 }}
-                            className="bg-white rounded-lg shadow-md p-6 flex flex-col items-center justify-between h-48"
-                        >
-                            <img src={Students} alt="Students" className="w-16 h-16 mb-4" aria-label="Students Icon" />
-                            <h2 className="text-xl font-semibold mb-2">Total Students</h2>
-                            <CountUp start={0} end={numberOfStudents} duration={2.5} className="text-3xl font-bold text-green-600" />
-                        </motion.div>
-                    </Grid>
-                    <Grid item xs={12} md={3} lg={3}>
-                        <motion.div 
-                            whileHover={{ scale: 1.05 }}
-                            className="bg-white rounded-lg shadow-md p-6 flex flex-col items-center justify-between h-48"
-                        >
-                            <img src={Classes} alt="Classes" className="w-16 h-16 mb-4" aria-label="Classes Icon" />
-                            <h2 className="text-xl font-semibold mb-2">Total Classes</h2>
-                            <CountUp start={0} end={numberOfClasses} duration={5} className="text-3xl font-bold text-blue-600" />
-                        </motion.div>
-                    </Grid>
-                    <Grid item xs={12} md={3} lg={3}>
-                        <motion.div 
-                            whileHover={{ scale: 1.05 }}
-                            className="bg-white rounded-lg shadow-md p-6 flex flex-col items-center justify-between h-48"
-                        >
-                            <img src={Teachers} alt="Teachers" className="w-16 h-16 mb-4" aria-label="Teachers Icon" />
-                            <h2 className="text-xl font-semibold mb-2">Total Teachers</h2>
-                            <CountUp start={0} end={numberOfTeachers} duration={2.5} className="text-3xl font-bold text-indigo-600" />
-                        </motion.div>
-                    </Grid>
-                    <Grid item xs={12} md={3} lg={3}>
-                        <motion.div 
-                            whileHover={{ scale: 1.05 }}
-                            className="bg-white rounded-lg shadow-md p-6 flex flex-col items-center justify-between h-48"
-                        >
-                            <img src={Fees} alt="Fees" className="w-16 h-16 mb-4" aria-label="Fees Icon" />
-                            <h2 className="text-xl font-semibold mb-2">Total Fees Paid</h2>
-                            <CountUp start={0} end={854672} duration={20} prefix="Ksh " className="text-3xl font-bold text-purple-600" />
-                        </motion.div>
-                    </Grid>
-                    <Grid item xs={12} md={12} lg={12}>
-                        <motion.div 
-                            initial={{ opacity: 0, y: 50 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.5, delay: 0.2 }}
-                            className="bg-white rounded-lg shadow-md p-6"
-                        >
-                            <SeeNotice />
-                        </motion.div>
-                    </Grid>
-                </Grid>
-            </Container>
-        </div>
-    );
-};
+      return (
+          <div className="bg-gray-100 min-h-screen py-12">
+              <Container maxWidth="lg">
+                  <Typography variant="h3" component="h1" gutterBottom className="mb-8 text-gray-800 font-bold text-center">
+                      Admin Dashboard
+                  </Typography>
+                  <Typography variant="h4" component="h2" gutterBottom className="mb-6 text-gray-700 font-semibold text-center">
+                      Welcome, {currentUser.name}!
+                  </Typography>
+                  <Grid container spacing={6}>
+                      <Grid item xs={12} md={6}>
+                          <motion.div
+                              initial={{ opacity: 0, y: 50 }}
+                              animate={{ opacity: 1, y: 0 }}
+                              transition={{ duration: 0.5 }}
+                          >
+                              <Paper className="p-6 shadow-lg rounded-lg">
+                                  <Typography variant="h5" gutterBottom className="font-bold text-gray-700 mb-4">Student Enrollment Trend</Typography>
+                                  <ResponsiveContainer width="100%" height={300}>
+                                      <LineChart data={studentData}>
+                                          <CartesianGrid strokeDasharray="3 3" />
+                                          <XAxis dataKey="month" />
+                                          <YAxis />
+                                          <Tooltip />
+                                          <Legend />
+                                          <Line type="monotone" dataKey="count" stroke="#4C51BF" strokeWidth={2} activeDot={{ r: 8 }} />
+                                      </LineChart>
+                                  </ResponsiveContainer>
+                              </Paper>
+                          </motion.div>
+                      </Grid>
+                      <Grid item xs={12} md={6}>
+                          <motion.div
+                              initial={{ opacity: 0, y: 50 }}
+                              animate={{ opacity: 1, y: 0 }}
+                              transition={{ duration: 0.5, delay: 0.2 }}
+                          >
+                              <Paper className="p-6 shadow-lg rounded-lg">
+                                  <Typography variant="h5" gutterBottom className="font-bold text-gray-700 mb-4">Class Distribution</Typography>
+                                  <ResponsiveContainer width="100%" height={300}>
+                                      <BarChart data={classData}>
+                                          <CartesianGrid strokeDasharray="3 3" />
+                                          <XAxis dataKey="subject" />
+                                          <YAxis />
+                                          <Tooltip />
+                                          <Legend />
+                                          <Bar dataKey="count" fill="#4FD1C5" />
+                                      </BarChart>
+                                  </ResponsiveContainer>
+                              </Paper>
+                          </motion.div>
+                      </Grid>
+                      <Grid item xs={12} md={6}>
+                          <motion.div
+                              initial={{ opacity: 0, y: 50 }}
+                              animate={{ opacity: 1, y: 0 }}
+                              transition={{ duration: 0.5, delay: 0.4 }}
+                          >
+                              <Paper className="p-6 shadow-lg rounded-lg">
+                                  <Typography variant="h5" gutterBottom className="font-bold text-gray-700 mb-4">Teacher Distribution</Typography>
+                                  <ResponsiveContainer width="100%" height={300}>
+                                      <PieChart>
+                                          <Pie
+                                              data={teacherData}
+                                              cx="50%"
+                                              cy="50%"
+                                              labelLine={false}
+                                              outerRadius={80}
+                                              fill="#8884d8"
+                                              dataKey="count"
+                                              label={({ name, percent }) => `${name} ${(percent * 100).toFixed(0)}%`}
+                                          >
+                                              {teacherData.map((entry, index) => (
+                                                  <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+                                              ))}
+                                          </Pie>
+                                          <Tooltip />
+                                      </PieChart>
+                                  </ResponsiveContainer>
+                              </Paper>
+                          </motion.div>
+                      </Grid>
+                      <Grid item xs={12} md={6}>
+                          <motion.div
+                              initial={{ opacity: 0, y: 50 }}
+                              animate={{ opacity: 1, y: 0 }}
+                              transition={{ duration: 0.5, delay: 0.6 }}
+                          >
+                              <Paper className="p-6 shadow-lg rounded-lg">
+                                  <Typography variant="h5" gutterBottom className="font-bold text-gray-700 mb-4">Notices</Typography>
+                                  <SeeNotice />
+                              </Paper>
+                          </motion.div>
+                      </Grid>
+                  </Grid>
+              </Container>
+          </div>
+      )
+  }
 
-export default AdminHomePage;
+  export default AdminHomePage

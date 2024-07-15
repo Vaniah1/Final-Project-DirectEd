@@ -43,7 +43,7 @@ import ShowClasses from './classRelated/ShowClasses';
 import AccountMenu from '../../components/AccountMenu';
 
 const AdminDashboard = () => {
-    const [open, setOpen] = useState(false);
+    const [open, setOpen] = useState(true);
     const toggleDrawer = () => {
         setOpen(!open);
     };
@@ -71,9 +71,9 @@ const AdminDashboard = () => {
                             variant="h6"
                             color="inherit"
                             noWrap
-                            sx={{ flexGrow: 1,fontWeight: 'bold',fontSize: '28px' }}
+                            sx={{ flexGrow: 1 }}
                         >
-                            AcademiHub
+                            AcademHub
                         </Typography>
                         <AccountMenu />
                     </Toolbar>

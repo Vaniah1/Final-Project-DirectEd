@@ -7,6 +7,7 @@ import { sclassReducer } from './sclassRelated/sclassSlice';
 import { teacherReducer } from './teacherRelated/teacherSlice';
 import { complainReducer } from './complainRelated/complainSlice';
 
+//Adding slice reducers to store
 const store = configureStore({
     reducer: {
         user: userReducer,
